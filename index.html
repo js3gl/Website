@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A-A Trucking LLC | Freight Hauled Right, On Time</title>
+<meta name="description" content="A-A Trucking LLC — full truckload, LTL, flatbed, reefer, and expedited freight hauling across the Mid-Atlantic, South Atlantic, East North Central, and East South Central regions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!--
+=====================================================================
+  EDIT-ME QUICK GUIDE
+=====================================================================
+  1. CONTACT INFO / SERVICES / PHOTOS / COVERAGE: everything is
+     controlled from one place — search this file for "SITE_CONFIG"
+     (in the <script> near the bottom). Change phone, email, address,
+     services, and gallery photos there and the whole page rebuilds
+     itself.
+
+  2. PHOTOS: the gallery starts with placeholder tiles (a truck icon
+     + label). To swap in a real photo, open SITE_CONFIG and change
+     an entry's `img` field to the path of your image, e.g.
+     img: "images/truck-01.jpg"
+     Put your image files in the "images" folder next to this
+     index.html file. Recommended: 1200px+ wide, landscape, JPG/PNG.
+     The owner photo works the same way — see `ownerPhoto` below.
+
+  3. COVERAGE MAP: highlighted states are listed in SITE_CONFIG.coverageStates.
+     Add or remove two-letter state codes to change what lights up.
+=====================================================================
+-->
+
+<style>
+  :root{
+    /* brand: maroon + sea/viking blue + white */
+    --maroon: #7A1F2E;
+    --maroon-dark: #591721;
+    --sea: #0F2A38;
+    --sea-2: #17394A;
+    --blue: #3E8FBF;
+    --blue-dim: #2E6F95;
+    --paper: #F5F3EC;
+    --paper-2: #E9E4D6;
+    --ink: #1c1f23;
+    --ink-soft: #565d66;
+    --steel: #4b5560;
+    --steel-light: #9BB0BD;
+    --line: rgba(255,255,255,0.12);
+    --line-dark: rgba(0,0,0,0.1);
+    --radius: 3px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color: inherit; text-decoration: none; }
+  h1,h2,h3,h4{
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin: 0;
+    line-height: 1.05;
+  }
+  .mono{ font-family: 'JetBrains Mono', monospace; }
+  .wrap{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+  .eyebrow{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--maroon);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom: 14px;
+  }
+  .eyebrow::before{
+    content:"";
+    width: 22px;
+    height: 2px;
+    background: var(--maroon);
+    display:inline-block;
+  }
+  :focus-visible{
+    outline: 3px solid var(--blue);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; }
+  }
+
+  /* ---------- lane divider (signature element) ---------- */
+  .lane{
+    position:relative;
+    height: 34px;
+    background: var(--sea);
+    overflow: hidden;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+  }
+  .lane::before{
+    content:"";
+    position:absolute;
+    top: 50%;
+    left:0;
+    width: 200%;
+    height: 4px;
+    transform: translateY(-50%);
+    background-image: repeating-linear-gradient(90deg, #ffffff 0 40px, transparent 40px 76px);
+    opacity: .85;
+    animation: drive 3.2s linear infinite;
+  }
+  .lane .rig{
+    position:absolute;
+    top: 50%;
+    left: -60px;
+    transform: translateY(-56%);
+    animation: rigmove 9s linear infinite;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,.5));
+  }
+  @keyframes drive{ from{ transform: translateY(-50%) translateX(0);} to{ transform: translateY(-50%) translateX(-76px);} }
+  @keyframes rigmove{ from{ left:-60px; } to{ left: 105%; } }
+
+  /* ---------- header ---------- */
+  header{
+    position: sticky;
+    top:0;
+    z-index: 50;
+    background: var(--sea);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 14px 28px;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+  .logo{
+    color: var(--paper);
+    font-family:'Oswald',sans-serif;
+    font-weight:700;
+    font-size: 21px;
+    letter-spacing: 0.03em;
+    display:flex;
+    align-items:center;
+    gap: 10px;
+  }
+  .logo span{ color: var(--blue); }
+  .logo small{
+    font-family:'JetBrains Mono',monospace;
+    text-transform: none;
+    font-size: 11px;
+    color: var(--steel-light);
+    letter-spacing: 0.05em;
+  }
+  nav{
+    display:flex;
+    align-items:center;
+    gap: 28px;
+  }
+  nav a{
+    color: var(--paper);
+    font-size: 14px;
+    font-weight:500;
+    letter-spacing:0.02em;
+    opacity: 0.85;
+    transition: opacity .15s;
+  }
+  nav a:hover{ opacity:1; color: var(--blue); }
+  .nav-links{ display:flex; gap:26px; }
+  .call-pill{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background: var(--maroon);
+    color:#fff !important;
+    padding: 9px 16px;
+    border-radius: var(--radius);
+    font-weight:600;
+    font-size: 14px;
+    opacity:1 !important;
+  }
+  .call-pill:hover{ background: var(--maroon-dark); }
+  .menu-btn{
+    display:none;
+    background:none;
+    border:1px solid var(--line);
+    color:var(--paper);
+    width:40px; height:40px;
+    border-radius: var(--radius);
+    font-size: 20px;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    background: var(--sea);
+    color: var(--paper);
+    padding: 76px 0 0;
+    overflow:hidden;
+    background-image:
+      linear-gradient(180deg, rgba(15,42,56,0.96), rgba(15,42,56,0.99)),
+      repeating-linear-gradient(115deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 26px);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .hero h1{
+    font-size: clamp(36px, 5.2vw, 62px);
+    color: var(--paper);
+    max-width: 16ch;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color: var(--blue);
+  }
+  .hero p.lede{
+    font-size: 18px;
+    line-height:1.6;
+    color: var(--steel-light);
+    max-width: 50ch;
+    margin: 20px 0 30px;
+  }
+  .btn-row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding: 14px 24px;
+    border-radius: var(--radius);
+    font-weight:600;
+    font-size:15px;
+    border: 1px solid transparent;
+    cursor:pointer;
+  }
+  .btn-primary{ background: var(--maroon); color: #fff; }
+  .btn-primary:hover{ background: var(--maroon-dark); }
+  .btn-ghost{ border-color: var(--line); color: var(--paper); }
+  .btn-ghost:hover{ border-color: var(--steel-light); }
+
+  .rig-stage{
+    width: 100%;
+    max-width: 900px;
+    margin: 34px auto 0;
+  }
+  .rig-stage svg{ width:100%; height:auto; display:block; }
+
+  .stat-strip{
+    border-top: 1px solid var(--line);
+    background: var(--sea-2);
+  }
+  .stat-strip .wrap{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .stat-strip .stat{
+    padding: 22px 18px;
+    border-left: 1px solid var(--line);
+    text-align:center;
+  }
+  .stat-strip .stat:first-child{ border-left:none; }
+  .stat-strip .num{ font-family:'Oswald',sans-serif; font-size: 27px; color: var(--paper); }
+  .stat-strip .lab{ font-size: 12px; color: var(--steel-light); margin-top:4px; letter-spacing:.03em; }
+
+  /* ---------- info strip ---------- */
+  .strip{
+    background: var(--paper-2);
+    border-bottom: 1px solid var(--line-dark);
+  }
+  .strip .wrap{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 10px 34px;
+    padding: 16px 28px;
+    justify-content:center;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing:.05em;
+    color: var(--ink-soft);
+  }
+  .strip b{ color: var(--ink); }
+
+  /* ---------- section shells ---------- */
+  section{ padding: 84px 0; }
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap: 24px;
+    margin-bottom: 44px;
+  }
+  .section-head h2{
+    font-size: clamp(28px, 3.6vw, 40px);
+    color: var(--ink);
+  }
+  .section-head p{
+    color: var(--ink-soft);
+    max-width: 42ch;
+    font-size:15.5px;
+    line-height:1.55;
+  }
+
+  /* ---------- services (waybill styled) ---------- */
+  .services-list{ border-top: 1px solid var(--line-dark); }
+  .service-row{
+    display:grid;
+    grid-template-columns: 130px 1fr 200px;
+    gap: 24px;
+    align-items:center;
+    padding: 26px 4px;
+    border-bottom: 1px solid var(--line-dark);
+    transition: background .15s;
+  }
+  .service-row:hover{ background: rgba(0,0,0,0.025); }
+  .service-code{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--maroon);
+    letter-spacing: .04em;
+  }
+  .service-row h3{
+    font-size: 21px;
+    color: var(--ink);
+    text-transform:none;
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .service-row p{
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    line-height:1.55;
+    margin:0;
+    max-width: 62ch;
+  }
+  .service-meta{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--steel);
+    text-align:right;
+    line-height:1.8;
+  }
+  @media (max-width: 760px){
+    .service-row{ grid-template-columns: 1fr; gap:8px; }
+    .service-meta{ text-align:left; }
+  }
+
+  /* ---------- about ---------- */
+  .about{ background: var(--sea); color: var(--paper); }
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1fr 0.7fr;
+    gap: 60px;
+    align-items:start;
+  }
+  .about h2{ color: var(--paper); font-size: clamp(28px,3.6vw,40px); margin-bottom:18px;}
+  .about p{ color: var(--steel-light); line-height:1.7; font-size: 15.5px; margin-bottom:16px;}
+  .cred-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border:1px solid var(--line);
+    border-radius: var(--radius);
+    overflow:hidden;
+    margin-top: 20px;
+  }
+  .cred{ background: var(--sea-2); padding: 20px; }
+  .cred .mono{ font-size:11.5px; color: var(--blue); text-transform:uppercase; letter-spacing:.1em; }
+  .cred .val{ font-family:'Oswald',sans-serif; font-size: 21px; margin-top:8px; color:var(--paper); }
+
+  .owner-card{
+    background: var(--sea-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow:hidden;
+  }
+  .owner-photo{
+    aspect-ratio: 4/3;
+    background: linear-gradient(150deg, var(--sea-2), #0a1e28);
+    border-bottom: 1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:10px;
+    color: var(--steel-light);
+    position:relative;
+  }
+  .owner-photo img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .owner-photo .placeholder-label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px; letter-spacing:.06em; text-transform:uppercase;
+  }
+  .owner-info{ padding: 18px 20px 22px; }
+  .owner-info .name{ font-family:'Oswald',sans-serif; font-size:19px; color:var(--paper); }
+  .owner-info .role{ font-family:'JetBrains Mono',monospace; font-size:11.5px; color: var(--blue); letter-spacing:.08em; text-transform:uppercase; margin-top:4px; }
+
+  /* ---------- gallery ---------- */
+  .gallery-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .g-tile{
+    position:relative;
+    aspect-ratio: 4/3;
+    border-radius: var(--radius);
+    overflow:hidden;
+    background: linear-gradient(150deg, var(--paper-2), #d7d0bd);
+    border: 1px dashed var(--steel-light);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:10px;
+    color: var(--steel);
+  }
+  .g-tile img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .g-tile .placeholder-label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px; letter-spacing:.06em; text-transform:uppercase;
+  }
+  @media (max-width: 760px){ .gallery-grid{ grid-template-columns: repeat(2,1fr); } }
+
+  /* ---------- coverage ---------- */
+  .coverage{ background: var(--paper-2); }
+  .coverage-inner{
+    display:grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 50px;
+    align-items:center;
+  }
+  .region-list{
+    list-style:none;
+    margin: 20px 0 0;
+    padding:0;
+    display:grid;
+    gap: 10px;
+  }
+  .region-list li{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 13.5px;
+    padding: 12px 14px;
+    border-left: 3px solid var(--blue);
+    background: rgba(62,143,191,0.08);
+    color: var(--ink);
+    display:flex;
+    justify-content:space-between;
+    gap: 10px;
+  }
+  .region-list li span{ color: var(--ink-soft); }
+  .map-box{
+    background: #fff;
+    border: 1px solid var(--line-dark);
+    border-radius: var(--radius);
+    padding: 18px;
+  }
+  .us-grid{
+    display:grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 3px;
+    aspect-ratio: 12/8;
+  }
+  .us-tile{
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    font-weight:600;
+    border-radius: 2px;
+    background: var(--paper);
+    color: var(--ink-soft);
+    border: 1px solid var(--line-dark);
+  }
+  .us-tile.hi{ background: var(--blue); color:#fff; border-color: transparent; }
+  .map-legend{ display:flex; gap:18px; margin-top:14px; flex-wrap:wrap; }
+  .map-legend .item{ display:flex; align-items:center; gap:7px; font-size:12px; color: var(--ink-soft); font-family:'JetBrains Mono',monospace; }
+  .map-legend .sw{ width:12px; height:12px; border-radius:2px; }
+
+  /* ---------- contact ---------- */
+  .contact{ background: var(--sea); color: var(--paper); }
+  .contact h2{ color: var(--paper); }
+  .contact-grid{ display:grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; }
+  .contact-card{
+    background: var(--sea-2);
+    border:1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 16px;
+  }
+  .contact-card .mono{ font-size:11.5px; color: var(--blue); letter-spacing:.1em; text-transform:uppercase; }
+  .contact-card .big{ font-family:'Oswald',sans-serif; font-size: 26px; margin-top:8px; }
+  .contact-card a.big{ color: var(--paper); }
+  .contact-card a.big:hover{ color: var(--blue); }
+
+  form{ display:grid; gap: 14px; }
+  .form-row{ display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
+  label{
+    font-size: 12.5px;
+    font-family:'JetBrains Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color: var(--steel-light);
+    display:block;
+    margin-bottom:6px;
+  }
+  input, textarea, select{
+    width:100%;
+    background: var(--sea-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    color: var(--paper);
+    font-family:'Inter',sans-serif;
+    font-size: 14.5px;
+  }
+  input:focus, textarea:focus, select:focus{ border-color: var(--blue); }
+  textarea{ resize: vertical; min-height: 110px; }
+  .form-note{ font-size: 12.5px; color: var(--steel-light); margin-top:4px; }
+
+  /* ---------- footer ---------- */
+  footer{ background: var(--sea); border-top: 1px solid var(--line); padding: 40px 0 28px; }
+  .foot-grid{ display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap: 24px; }
+  .foot-links{ display:flex; gap:22px; flex-wrap:wrap; }
+  .foot-links a{ color: var(--steel-light); font-size:13.5px; }
+  .foot-links a:hover{ color: var(--blue); }
+  .foot-fine{
+    color: var(--steel-light);
+    font-family:'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    margin-top: 22px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+    opacity:.7;
+  }
+
+  @media (max-width: 900px){
+    .about-grid, .contact-grid, .coverage-inner{ grid-template-columns: 1fr; }
+    .nav-links{ display:none; }
+    .menu-btn{ display:block; }
+    .gallery-grid{ grid-template-columns: repeat(2,1fr); }
+    .stat-strip .wrap{ grid-template-columns: 1fr 1fr; }
+    .stat-strip .stat:nth-child(3){ border-left:none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="topbar">
+    <div class="logo">
+      <svg width="30" height="20" viewBox="0 0 46 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="6" width="20" height="10" rx="1.5" fill="#7A1F2E"/>
+        <rect x="23" y="9" width="22" height="7" rx="1" fill="#3E8FBF"/>
+        <circle cx="10" cy="18" r="3" fill="#0F2A38" stroke="#F5F3EC" stroke-width="1.2"/>
+        <circle cx="36" cy="18" r="3" fill="#0F2A38" stroke="#F5F3EC" stroke-width="1.2"/>
+      </svg>
+      A-A<span>·</span>TRUCKING <small>LLC</small>
+    </div>
+    <nav>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#coverage">Coverage</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="call-pill" id="headerPhone" href="tel:+15555550123">📞 (555) 555-0123</a>
+    </nav>
+    <button class="menu-btn" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<div class="lane" aria-hidden="true">
+  <svg class="rig" width="46" height="22" viewBox="0 0 46 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="1" y="6" width="20" height="10" rx="1.5" fill="#7A1F2E"/>
+    <rect x="23" y="9" width="22" height="7" rx="1" fill="#3E8FBF"/>
+    <circle cx="10" cy="18" r="3" fill="#0F2A38" stroke="#F5F3EC" stroke-width="1.2"/>
+    <circle cx="36" cy="18" r="3" fill="#0F2A38" stroke="#F5F3EC" stroke-width="1.2"/>
+  </svg>
+</div>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Licensed &amp; Insured Motor Carrier</div>
+      <h1>Freight moves.<br><em>Deadlines don't.</em></h1>
+      <p class="lede">A-A Trucking LLC hauls full and partial loads across the Mid-Atlantic, South Atlantic, East North Central, and East South Central regions with clean equipment and drivers who show up when they say they will.</p>
+      <div class="btn-row">
+        <a href="#contact" class="btn btn-primary">Get a Quote</a>
+        <a href="#services" class="btn btn-ghost">See What We Haul →</a>
+      </div>
+    </div>
+
+    <div class="rig-stage">
+      <!-- Flatbed semi illustration, brand wordmark on the door -->
+      <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="345" cy="272" rx="320" ry="12" fill="#000000" opacity="0.28"/>
+
+        <!-- everything below is mirrored so the cab lands on the right -->
+        <g transform="scale(-1,1) translate(-680,0)">
+
+          <!-- frame rail -->
+          <rect x="55" y="222" width="580" height="10" rx="2" fill="#2c3d47"/>
+
+          <!-- flatbed deck -->
+          <rect x="205" y="204" width="435" height="16" rx="2" fill="#17394A" stroke="#3E8FBF" stroke-width="2"/>
+
+          <!-- cartoon mulch pile -->
+          <path d="M225,204 Q250,150 300,160 Q330,110 385,145 Q420,105 470,140 Q520,115 560,150 Q595,165 605,204 Z" fill="#7A4A25"/>
+          <path d="M225,204 Q250,158 300,168 Q330,122 385,152 Q420,118 470,148 Q520,126 560,158 Q595,172 605,204 Z" fill="#8B5A2B" opacity="0.9"/>
+          <g fill="#4A2E17" opacity="0.85">
+            <ellipse cx="255" cy="182" rx="9" ry="5" transform="rotate(-18 255 182)"/>
+            <ellipse cx="290" cy="165" rx="8" ry="4.5" transform="rotate(12 290 165)"/>
+            <ellipse cx="325" cy="150" rx="9" ry="5" transform="rotate(-8 325 150)"/>
+            <ellipse cx="365" cy="170" rx="8" ry="4.5" transform="rotate(20 365 170)"/>
+            <ellipse cx="400" cy="140" rx="9" ry="5" transform="rotate(-15 400 140)"/>
+            <ellipse cx="440" cy="160" rx="8" ry="4.5" transform="rotate(10 440 160)"/>
+            <ellipse cx="480" cy="145" rx="9" ry="5" transform="rotate(-10 480 145)"/>
+            <ellipse cx="520" cy="168" rx="8" ry="4.5" transform="rotate(15 520 168)"/>
+            <ellipse cx="555" cy="182" rx="8" ry="4.5" transform="rotate(-12 555 182)"/>
+          </g>
+          <g fill="#B5713A" opacity="0.8">
+            <ellipse cx="270" cy="192" rx="6" ry="3.5" transform="rotate(10 270 192)"/>
+            <ellipse cx="345" cy="163" rx="6" ry="3.5" transform="rotate(-14 345 163)"/>
+            <ellipse cx="415" cy="155" rx="6" ry="3.5" transform="rotate(8 415 155)"/>
+            <ellipse cx="500" cy="178" rx="6" ry="3.5" transform="rotate(-10 500 178)"/>
+            <ellipse cx="245" cy="196" rx="5" ry="3" transform="rotate(6 245 196)"/>
+          </g>
+
+          <!-- tie-down straps -->
+          <line x1="255" y1="175" x2="220" y2="215" stroke="#F5F3EC" stroke-width="2.5" stroke-dasharray="5 5" opacity="0.85"/>
+          <line x1="385" y1="140" x2="385" y2="215" stroke="#F5F3EC" stroke-width="2.5" stroke-dasharray="5 5" opacity="0.85"/>
+          <line x1="520" y1="165" x2="565" y2="215" stroke="#F5F3EC" stroke-width="2.5" stroke-dasharray="5 5" opacity="0.85"/>
+
+          <!-- cab -->
+          <rect x="20" y="222" width="175" height="8" rx="2" fill="#1c262b"/>
+          <path d="M40 224 V152 Q40 122 68 122 H168 Q182 122 182 138 V178 H190 V224 H40 Z" fill="#7A1F2E"/>
+          <path d="M58 132 H166 Q174 132 174 142 V166 H58 V132 Z" fill="#CFE4EE"/>
+          <rect x="58" y="176" width="112" height="46" rx="4" fill="#591721"/>
+
+          <!-- mirror + exhaust -->
+          <rect x="30" y="138" width="7" height="20" rx="2" fill="#1c262b"/>
+          <rect x="196" y="80" width="10" height="98" rx="2" fill="#4b5560"/>
+          <rect x="193" y="74" width="16" height="10" rx="2" fill="#1c262b"/>
+
+          <!-- wheels -->
+          <circle cx="95" cy="246" r="24" fill="#111b20"/>
+          <circle cx="95" cy="246" r="10" fill="#c9d3d8"/>
+          <circle cx="165" cy="246" r="24" fill="#111b20"/>
+          <circle cx="165" cy="246" r="10" fill="#c9d3d8"/>
+          <circle cx="470" cy="246" r="24" fill="#111b20"/>
+          <circle cx="470" cy="246" r="10" fill="#c9d3d8"/>
+          <circle cx="530" cy="246" r="24" fill="#111b20"/>
+          <circle cx="530" cy="246" r="10" fill="#c9d3d8"/>
+        </g>
+
+        <!-- door wordmark (kept unmirrored so the text reads correctly) -->
+        <text x="566" y="196" text-anchor="middle" font-family="Oswald, sans-serif" font-weight="700" font-size="21" fill="#F5F3EC" letter-spacing="1">A-A</text>
+        <text x="566" y="211" text-anchor="middle" font-family="JetBrains Mono, monospace" font-weight="600" font-size="8.5" fill="#3E8FBF" letter-spacing="1.5">TRUCKING LLC</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="stat-strip">
+    <div class="wrap">
+      <div class="stat"><div class="num">98.6%</div><div class="lab">On-time delivery</div></div>
+      <div class="stat"><div class="num">24/7</div><div class="lab">Dispatch line</div></div>
+      <div class="stat"><div class="num">15+</div><div class="lab">Years hauling</div></div>
+      <div class="stat"><div class="num">4</div><div class="lab">Regions served</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <span><b>DOT#</b> 0000000 (edit me)</span>
+    <span><b>MC#</b> 000000 (edit me)</span>
+    <span><b>Fleet</b> Flatbed · Dry Van · Reefer</span>
+    <span><b>Based in</b> Your City, ST</span>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">What We Haul</div>
+        <h2>Services</h2>
+      </div>
+      <p>Every load gets a dedicated point of contact, live status updates, and a driver who's been vetted, trained, and background-checked.</p>
+    </div>
+    <div class="services-list" id="servicesList"></div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="eyebrow">Who We Are</div>
+      <h2>Built on showing up.</h2>
+      <p>A-A Trucking LLC is a family-run motor carrier hauling freight for shippers who need it done right the first time. We keep our fleet small enough to know every driver by name, and every load gets tracked from pickup to delivery.</p>
+      <p>Replace this paragraph with your company's real story — when you started, what you specialize in, and why customers keep coming back. Keep it short and specific; two tight paragraphs beat one long one.</p>
+      <div class="cred-grid">
+        <div class="cred"><div class="mono">Authority</div><div class="val">DOT / MC Active</div></div>
+        <div class="cred"><div class="mono">Insurance</div><div class="val">$1M Cargo</div></div>
+        <div class="cred"><div class="mono">Fleet Size</div><div class="val">12 Power Units</div></div>
+        <div class="cred"><div class="mono">Safety Rating</div><div class="val">Satisfactory</div></div>
+      </div>
+    </div>
+    <div class="owner-card">
+      <div class="owner-photo" id="ownerPhotoBox">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="12" cy="8" r="4"/>
+          <path d="M4 20c0-4 3.5-7 8-7s8 3 8 7"/>
+        </svg>
+        <div class="placeholder-label">Owner Photo</div>
+      </div>
+      <div class="owner-info">
+        <div class="name" id="ownerName">Owner Name</div>
+        <div class="role" id="ownerRole">Founder &amp; Operator</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">On the Road</div>
+        <h2>Gallery</h2>
+      </div>
+      <p>Photos of the fleet, drivers, and freight in motion. Swap these placeholders for your own — see the note at the top of this file.</p>
+    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </div>
+</section>
+
+<section class="coverage" id="coverage">
+  <div class="wrap coverage-inner">
+    <div>
+      <div class="eyebrow">Where We Run</div>
+      <h2>Coverage Area</h2>
+      <p style="color:var(--ink-soft); margin-top:14px; max-width:48ch; line-height:1.6;">A-A Trucking runs primarily across four regions. Highlighted states below are regular lanes; everything else is available by request.</p>
+      <ul class="region-list" id="regionList"></ul>
+    </div>
+    <div class="map-box">
+      <div class="us-grid" id="usGrid"></div>
+      <div class="map-legend">
+        <div class="item"><span class="sw" style="background:var(--blue);"></span> Primary coverage</div>
+        <div class="item"><span class="sw" style="background:var(--paper); border:1px solid var(--line-dark);"></span> By request</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="eyebrow">Get In Touch</div>
+      <h2 style="margin-bottom:24px;">Request a quote.</h2>
+
+      <div class="contact-card">
+        <div class="mono">Call Dispatch</div>
+        <a class="big" id="contactPhone" href="tel:+15555550123">(555) 555-0123</a>
+      </div>
+      <div class="contact-card">
+        <div class="mono">Email</div>
+        <a class="big" id="contactEmail" href="mailto:dispatch@aatruckingllc.com" style="font-size:19px;">dispatch@aatruckingllc.com</a>
+      </div>
+      <div class="contact-card">
+        <div class="mono">Office</div>
+        <div class="big" style="font-size:17px; color:var(--paper);" id="contactAddress">123 Freight Way, Your City, ST 00000</div>
+      </div>
+    </div>
+
+    <div>
+      <form id="quoteForm">
+        <div class="form-row">
+          <div>
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text" required placeholder="Jane Smith">
+          </div>
+          <div>
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" placeholder="Acme Distribution">
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" required placeholder="(555) 555-0123">
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="you@company.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="load">Load type</label>
+            <select id="load" name="load">
+              <option>Full Truckload (FTL)</option>
+              <option>Less Than Truckload (LTL)</option>
+              <option>Flatbed</option>
+              <option>Refrigerated</option>
+              <option>Expedited</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label for="route">Pickup → Delivery</label>
+            <input id="route" name="route" type="text" placeholder="Columbus, OH → Nashville, TN">
+          </div>
+        </div>
+        <div>
+          <label for="details">Details</label>
+          <textarea id="details" name="details" placeholder="Weight, dimensions, preferred pickup date, anything else we should know."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="justify-self:start;">Send Request</button>
+        <div class="form-note" id="formNote">This form opens your email client with the details pre-filled — no data is stored anywhere else.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="logo" style="font-size:17px;">A-A<span>·</span>TRUCKING <small>LLC</small></div>
+      <div class="foot-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#coverage">Coverage</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="foot-fine">
+      <span>© <span id="year"></span> A-A Trucking LLC. All rights reserved.</span>
+      <span>DOT# 0000000 · MC# 000000 (edit in SITE_CONFIG)</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* =====================================================================
+   SITE_CONFIG — edit everything here. The page builds itself from this.
+   ===================================================================== */
+const SITE_CONFIG = {
+  contact: {
+    phoneDisplay: "(555) 555-0123",
+    phoneHref: "+15555550123",
+    email: "dispatch@aatruckingllc.com",
+    address: "123 Freight Way, Your City, ST 00000"
+  },
+
+  services: [
+    { code:"FTL-01", title:"Full Truckload", desc:"One shipper, one trailer, straight through. The fastest way to move a full load with no stops for other freight.", meta:"REGIONAL\nDRY VAN" },
+    { code:"LTL-02", title:"Less Than Truckload", desc:"Smaller shipments that don't need a full trailer, consolidated and priced by space and weight.", meta:"REGIONAL\nSHARED LOAD" },
+    { code:"FLT-03", title:"Flatbed", desc:"Oversized, palletized, or awkward freight that needs an open deck — building materials, machinery, steel.", meta:"OPEN DECK\nTARP AVAIL." },
+    { code:"RFR-04", title:"Refrigerated", desc:"Temperature-controlled trailers for perishables, produce, and anything that can't take a swing in temp.", meta:"TEMP CONTROL\n-20°F TO 70°F" },
+    { code:"EXP-05", title:"Expedited", desc:"Time-critical freight that needs to move now. Dedicated truck, direct route, no detours.", meta:"SAME-DAY\nDIRECT ROUTE" },
+    { code:"WHS-06", title:"Drayage & Warehousing", desc:"Port and rail drayage plus short-term storage for freight in transit between legs of a move.", meta:"PORT / RAIL\nSHORT-TERM" }
+  ],
+
+  // Owner card in the About section
+  ownerPhoto: null, // e.g. "images/owner.jpg"
+  ownerName: "Owner Name",
+  ownerRole: "Founder & Operator",
+
+  // Gallery — set `img` to a real photo path (e.g. "images/rig-01.jpg")
+  gallery: [
+    { label:"Fleet",        img:null },
+    { label:"Loading Dock", img:null },
+    { label:"On the Road",  img:null },
+    { label:"Flatbed Load", img:null },
+    { label:"Reefer Unit",  img:null },
+    { label:"Driver Team",  img:null }
+  ],
+
+  // Coverage regions shown in the list next to the map
+  regions: [
+    { name:"Mid-Atlantic", note:"NY · NJ · PA" },
+    { name:"South Atlantic", note:"DE · MD · VA · WV · NC · SC · GA · FL · DC" },
+    { name:"East North Central", note:"WI · MI · IL · IN · OH" },
+    { name:"East South Central", note:"KY · TN · MS · AL" }
+  ],
+
+  // Two-letter state codes that light up on the coverage map
+  coverageStates: ["NY","NJ","PA","DE","MD","VA","WV","NC","SC","GA","FL","DC","KY","TN","MS","AL","WI","MI","IL","IN","OH"]
+};
+
+/* ---------------------------------------------------------------- */
+
+function el(html){
+  const t = document.createElement('template');
+  t.innerHTML = html.trim();
+  return t.content.firstElementChild;
+}
+
+// Contact info
+document.querySelectorAll('#headerPhone, #contactPhone').forEach(a=>{ a.href = 'tel:' + SITE_CONFIG.contact.phoneHref; });
+document.getElementById('headerPhone').innerHTML = '📞 ' + SITE_CONFIG.contact.phoneDisplay;
+document.getElementById('contactPhone').textContent = SITE_CONFIG.contact.phoneDisplay;
+document.getElementById('contactEmail').textContent = SITE_CONFIG.contact.email;
+document.getElementById('contactEmail').href = 'mailto:' + SITE_CONFIG.contact.email;
+document.getElementById('contactAddress').textContent = SITE_CONFIG.contact.address;
+
+// Services
+const servicesList = document.getElementById('servicesList');
+SITE_CONFIG.services.forEach(s=>{
+  servicesList.appendChild(el(`
+    <div class="service-row">
+      <div class="service-code mono">${s.code}</div>
+      <div><h3>${s.title}</h3><p>${s.desc}</p></div>
+      <div class="service-meta">${s.meta.split('\n').join('<br>')}</div>
+    </div>
+  `));
+});
+
+// Owner card
+if (SITE_CONFIG.ownerPhoto){
+  document.getElementById('ownerPhotoBox').innerHTML = `<img src="${SITE_CONFIG.ownerPhoto}" alt="${SITE_CONFIG.ownerName}">`;
+}
+document.getElementById('ownerName').textContent = SITE_CONFIG.ownerName;
+document.getElementById('ownerRole').textContent = SITE_CONFIG.ownerRole;
+
+// Regions
+const regionList = document.getElementById('regionList');
+SITE_CONFIG.regions.forEach(r=>{
+  regionList.appendChild(el(`<li>${r.name}<span>${r.note}</span></li>`));
+});
+
+// Gallery
+const galleryGrid = document.getElementById('galleryGrid');
+SITE_CONFIG.gallery.forEach(g=>{
+  if(g.img){
+    galleryGrid.appendChild(el(`<div class="g-tile"><img src="${g.img}" alt="${g.label}"></div>`));
+  } else {
+    galleryGrid.appendChild(el(`
+      <div class="g-tile">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <rect x="2" y="7" width="13" height="9" rx="1"/>
+          <path d="M15 10h3l3 3v3h-6z"/>
+          <circle cx="6" cy="18" r="1.6"/>
+          <circle cx="17" cy="18" r="1.6"/>
+        </svg>
+        <div class="placeholder-label">${g.label}</div>
+      </div>
+    `));
+  }
+});
+
+// ---------- Coverage map: schematic US tile grid ----------
+// col = west(1) -> east(12), row = north(1) -> south(8)
+// Layout verified against the NYT-derived grid used in kristw/gridmap-layout-usa
+const US_TILES = [
+  {c:"AK",col:1,row:1},{c:"ME",col:12,row:1},
+  {c:"VT",col:10,row:2},{c:"NH",col:11,row:2},{c:"MA",col:12,row:2},
+  {c:"WA",col:2,row:3},{c:"MT",col:3,row:3},{c:"ND",col:4,row:3},{c:"SD",col:5,row:3},{c:"MN",col:6,row:3},{c:"WI",col:7,row:3},{c:"MI",col:8,row:3},{c:"NY",col:10,row:3},{c:"CT",col:11,row:3},{c:"RI",col:12,row:3},
+  {c:"OR",col:2,row:4},{c:"ID",col:3,row:4},{c:"WY",col:4,row:4},{c:"NE",col:5,row:4},{c:"IA",col:6,row:4},{c:"IL",col:7,row:4},{c:"IN",col:8,row:4},{c:"OH",col:9,row:4},{c:"PA",col:10,row:4},{c:"NJ",col:11,row:4},
+  {c:"CA",col:1,row:5},{c:"NV",col:2,row:5},{c:"UT",col:3,row:5},{c:"CO",col:4,row:5},{c:"KS",col:5,row:5},{c:"MO",col:6,row:5},{c:"KY",col:7,row:5},{c:"WV",col:8,row:5},{c:"DC",col:9,row:5},{c:"MD",col:10,row:5},{c:"DE",col:11,row:5},
+  {c:"AZ",col:3,row:6},{c:"NM",col:4,row:6},{c:"OK",col:5,row:6},{c:"AR",col:6,row:6},{c:"TN",col:7,row:6},{c:"VA",col:8,row:6},{c:"NC",col:9,row:6},
+  {c:"TX",col:4,row:7},{c:"LA",col:5,row:7},{c:"MS",col:6,row:7},{c:"AL",col:7,row:7},{c:"GA",col:8,row:7},{c:"SC",col:9,row:7},
+  {c:"HI",col:1,row:8},{c:"FL",col:8,row:8}
+];
+const usGrid = document.getElementById('usGrid');
+const covered = new Set(SITE_CONFIG.coverageStates);
+US_TILES.forEach(s=>{
+  const hi = covered.has(s.c);
+  usGrid.appendChild(el(`<div class="us-tile${hi ? ' hi':''}" style="grid-column:${s.col};grid-row:${s.row};" title="${s.c}">${s.c}</div>`));
+});
+
+// Quote form -> mailto (static site, no backend)
+document.getElementById('quoteForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const f = new FormData(e.target);
+  const lines = [
+    'Name: ' + f.get('name'),
+    'Company: ' + (f.get('company') || '—'),
+    'Phone: ' + f.get('phone'),
+    'Email: ' + f.get('email'),
+    'Load type: ' + f.get('load'),
+    'Route: ' + (f.get('route') || '—'),
+    'Details: ' + (f.get('details') || '—')
+  ].join('%0D%0A');
+  window.location.href = `mailto:${SITE_CONFIG.contact.email}?subject=${encodeURIComponent('Quote Request from ' + f.get('name'))}&body=${lines}`;
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
