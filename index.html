@@ -33,21 +33,21 @@
 
 <style>
   :root{
-    /* brand: maroon + sea/viking blue + white */
-    --maroon: #7A1F2E;
-    --maroon-dark: #591721;
-    --sea: #0F2A38;
-    --sea-2: #17394A;
-    --blue: #3E8FBF;
-    --blue-dim: #2E6F95;
-    --paper: #F5F3EC;
-    --paper-2: #E9E4D6;
+    /* brand: oxblood maroon + slate blue + white, kept deliberately muted */
+    --maroon: #6B2430;
+    --maroon-dark: #4E1A23;
+    --sea: #10161C;
+    --sea-2: #1A222A;
+    --blue: #6C8CA3;
+    --blue-dim: #52697A;
+    --paper: #F7F6F2;
+    --paper-2: #EBE7DE;
     --ink: #1c1f23;
     --ink-soft: #565d66;
     --steel: #4b5560;
-    --steel-light: #9BB0BD;
-    --line: rgba(255,255,255,0.12);
-    --line-dark: rgba(0,0,0,0.1);
+    --steel-light: #97A3AC;
+    --line: rgba(255,255,255,0.10);
+    --line-dark: rgba(0,0,0,0.09);
     --radius: 3px;
   }
 
@@ -212,9 +212,6 @@
     color: var(--paper);
     padding: 76px 0 0;
     overflow:hidden;
-    background-image:
-      linear-gradient(180deg, rgba(15,42,56,0.96), rgba(15,42,56,0.99)),
-      repeating-linear-gradient(115deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 26px);
   }
   .hero-grid{
     display:grid;
@@ -361,6 +358,40 @@
     .service-meta{ text-align:left; }
   }
 
+  /* ---------- why choose us ---------- */
+  .why-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--line-dark);
+    border: 1px solid var(--line-dark);
+  }
+  .why-card{
+    background: var(--paper);
+    padding: 26px 24px;
+  }
+  .why-card .ic{
+    width: 34px; height:34px;
+    display:flex; align-items:center; justify-content:center;
+    color: var(--maroon);
+    margin-bottom: 14px;
+  }
+  .why-card h3{
+    font-size: 17px;
+    text-transform:none;
+    font-weight:600;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .why-card p{
+    font-size: 14px;
+    line-height:1.55;
+    color: var(--ink-soft);
+    margin:0;
+  }
+  @media (max-width: 760px){ .why-grid{ grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px){ .why-grid{ grid-template-columns: 1fr; } }
+
   /* ---------- about ---------- */
   .about{ background: var(--sea); color: var(--paper); }
   .about-grid{
@@ -411,6 +442,55 @@
   .owner-info{ padding: 18px 20px 22px; }
   .owner-info .name{ font-family:'Oswald',sans-serif; font-size:19px; color:var(--paper); }
   .owner-info .role{ font-family:'JetBrains Mono',monospace; font-size:11.5px; color: var(--blue); letter-spacing:.08em; text-transform:uppercase; margin-top:4px; }
+
+  /* ---------- careers ---------- */
+  .careers{ background: var(--sea); color: var(--paper); }
+  .careers-grid{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 56px;
+    align-items:start;
+  }
+  .careers h2{ color: var(--paper); font-size: clamp(28px,3.6vw,40px); margin-bottom:16px; }
+  .careers-lede{ color: var(--steel-light); line-height:1.65; font-size:15.5px; max-width:48ch; margin-bottom:22px; }
+  .perk-list{ list-style:none; margin:0 0 28px; padding:0; display:grid; gap:10px; }
+  .perk-list li{
+    font-size: 14.5px;
+    color: var(--paper);
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .perk-list li::before{
+    content:"—";
+    color: var(--blue);
+    font-family:'JetBrains Mono', monospace;
+  }
+  .careers-card{
+    background: var(--sea-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px;
+  }
+  .careers-card .mono{ font-size:11.5px; color: var(--blue); text-transform:uppercase; letter-spacing:.1em; margin-bottom:14px; display:block; }
+  .role-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14.5px;
+  }
+  .role-row:last-child{ border-bottom:none; }
+  .role-row .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--blue);
+    border: 1px solid var(--blue-dim);
+    border-radius: 2px;
+    padding: 3px 8px;
+  }
+  @media (max-width: 900px){ .careers-grid{ grid-template-columns: 1fr; } }
 
   /* ---------- gallery ---------- */
   .gallery-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -493,18 +573,21 @@
   /* ---------- contact ---------- */
   .contact{ background: var(--sea); color: var(--paper); }
   .contact h2{ color: var(--paper); }
-  .contact-grid{ display:grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; }
+  .contact-info-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .contact-card{
     background: var(--sea-2);
     border:1px solid var(--line);
     border-radius: var(--radius);
     padding: 28px;
-    margin-bottom: 16px;
   }
   .contact-card .mono{ font-size:11.5px; color: var(--blue); letter-spacing:.1em; text-transform:uppercase; }
   .contact-card .big{ font-family:'Oswald',sans-serif; font-size: 26px; margin-top:8px; }
   .contact-card a.big{ color: var(--paper); }
   .contact-card a.big:hover{ color: var(--blue); }
+  @media (max-width: 760px){ .contact-info-grid{ grid-template-columns: 1fr; } }
+
+  .quote{ background: var(--sea-2); }
+  .quote-form-wrap{ max-width: 720px; }
 
   form{ display:grid; gap: 14px; }
   .form-row{ display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
@@ -551,12 +634,31 @@
 
   @media (max-width: 900px){
     .about-grid, .contact-grid, .coverage-inner{ grid-template-columns: 1fr; }
-    .nav-links{ display:none; }
+    .nav-links{
+      display:none;
+      position:absolute;
+      top:100%; left:0; right:0;
+      background: var(--sea);
+      border-bottom: 1px solid var(--line);
+      flex-direction:column;
+      gap:0;
+      padding: 6px 0;
+    }
+    .nav-links.open{ display:flex; }
+    .nav-links a{
+      padding: 14px 28px;
+      opacity:1;
+      border-top: 1px solid var(--line);
+    }
+    .nav-links a:first-child{ border-top:none; }
     .menu-btn{ display:block; }
     .gallery-grid{ grid-template-columns: repeat(2,1fr); }
     .stat-strip .wrap{ grid-template-columns: 1fr 1fr; }
     .stat-strip .stat:nth-child(3){ border-left:none; }
   }
+
+  /* keep anchored sections clear of the sticky header when jumping to them */
+  section[id], div[id="contact-us"]{ scroll-margin-top: 76px; }
 </style>
 </head>
 <body>
@@ -565,33 +667,35 @@
   <div class="topbar">
     <div class="logo">
       <svg width="30" height="20" viewBox="0 0 46 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="1" y="6" width="20" height="10" rx="1.5" fill="#7A1F2E"/>
-        <rect x="23" y="9" width="22" height="7" rx="1" fill="#3E8FBF"/>
-        <circle cx="10" cy="18" r="3" fill="#0F2A38" stroke="#F5F3EC" stroke-width="1.2"/>
-        <circle cx="36" cy="18" r="3" fill="#0F2A38" stroke="#F5F3EC" stroke-width="1.2"/>
+        <rect x="1" y="6" width="20" height="10" rx="1.5" fill="#6B2430"/>
+        <rect x="23" y="9" width="22" height="7" rx="1" fill="#6C8CA3"/>
+        <circle cx="10" cy="18" r="3" fill="#10161C" stroke="#F7F6F2" stroke-width="1.2"/>
+        <circle cx="36" cy="18" r="3" fill="#10161C" stroke="#F7F6F2" stroke-width="1.2"/>
       </svg>
       A-A<span>·</span>TRUCKING <small>LLC</small>
     </div>
     <nav>
-      <div class="nav-links">
+      <div class="nav-links" id="navLinks">
         <a href="#services">Services</a>
+        <a href="#why-us">Why Us</a>
         <a href="#about">About</a>
-        <a href="#gallery">Gallery</a>
+        <a href="#careers">Careers</a>
         <a href="#coverage">Coverage</a>
-        <a href="#contact">Contact</a>
+        <a href="#contact-us">Contact</a>
+        <a href="#quote">Get a Quote</a>
       </div>
       <a class="call-pill" id="headerPhone" href="tel:+15555550123">📞 (555) 555-0123</a>
     </nav>
-    <button class="menu-btn" aria-label="Menu">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">☰</button>
   </div>
 </header>
 
 <div class="lane" aria-hidden="true">
   <svg class="rig" width="46" height="22" viewBox="0 0 46 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="1" y="6" width="20" height="10" rx="1.5" fill="#7A1F2E"/>
-    <rect x="23" y="9" width="22" height="7" rx="1" fill="#3E8FBF"/>
-    <circle cx="10" cy="18" r="3" fill="#0F2A38" stroke="#F5F3EC" stroke-width="1.2"/>
-    <circle cx="36" cy="18" r="3" fill="#0F2A38" stroke="#F5F3EC" stroke-width="1.2"/>
+    <rect x="1" y="6" width="20" height="10" rx="1.5" fill="#6B2430"/>
+    <rect x="23" y="9" width="22" height="7" rx="1" fill="#6C8CA3"/>
+    <circle cx="10" cy="18" r="3" fill="#10161C" stroke="#F7F6F2" stroke-width="1.2"/>
+    <circle cx="36" cy="18" r="3" fill="#10161C" stroke="#F7F6F2" stroke-width="1.2"/>
   </svg>
 </div>
 
@@ -600,9 +704,9 @@
     <div>
       <div class="eyebrow">Licensed &amp; Insured Motor Carrier</div>
       <h1>Freight moves.<br><em>Deadlines don't.</em></h1>
-      <p class="lede">A-A Trucking LLC hauls full and partial loads across the Mid-Atlantic, South Atlantic, East North Central, and East South Central regions with clean equipment and drivers who show up when they say they will.</p>
+      <p class="lede">A-A Trucking LLC runs flatbed freight from Michigan and Ohio down through the Mid-Atlantic into Virginia and the Carolinas, with clean equipment and drivers who show up when they say they will.</p>
       <div class="btn-row">
-        <a href="#contact" class="btn btn-primary">Get a Quote</a>
+        <a href="#quote" class="btn btn-primary">Get a Quote</a>
         <a href="#services" class="btn btn-ghost">See What We Haul →</a>
       </div>
     </div>
@@ -619,40 +723,22 @@
           <rect x="55" y="222" width="580" height="10" rx="2" fill="#2c3d47"/>
 
           <!-- flatbed deck -->
-          <rect x="205" y="204" width="435" height="16" rx="2" fill="#17394A" stroke="#3E8FBF" stroke-width="2"/>
-
-          <!-- cartoon mulch pile -->
-          <path d="M225,204 Q250,150 300,160 Q330,110 385,145 Q420,105 470,140 Q520,115 560,150 Q595,165 605,204 Z" fill="#7A4A25"/>
-          <path d="M225,204 Q250,158 300,168 Q330,122 385,152 Q420,118 470,148 Q520,126 560,158 Q595,172 605,204 Z" fill="#8B5A2B" opacity="0.9"/>
-          <g fill="#4A2E17" opacity="0.85">
-            <ellipse cx="255" cy="182" rx="9" ry="5" transform="rotate(-18 255 182)"/>
-            <ellipse cx="290" cy="165" rx="8" ry="4.5" transform="rotate(12 290 165)"/>
-            <ellipse cx="325" cy="150" rx="9" ry="5" transform="rotate(-8 325 150)"/>
-            <ellipse cx="365" cy="170" rx="8" ry="4.5" transform="rotate(20 365 170)"/>
-            <ellipse cx="400" cy="140" rx="9" ry="5" transform="rotate(-15 400 140)"/>
-            <ellipse cx="440" cy="160" rx="8" ry="4.5" transform="rotate(10 440 160)"/>
-            <ellipse cx="480" cy="145" rx="9" ry="5" transform="rotate(-10 480 145)"/>
-            <ellipse cx="520" cy="168" rx="8" ry="4.5" transform="rotate(15 520 168)"/>
-            <ellipse cx="555" cy="182" rx="8" ry="4.5" transform="rotate(-12 555 182)"/>
+          <rect x="205" y="204" width="435" height="16" rx="2" fill="#1A222A" stroke="#6C8CA3" stroke-width="2"/>
+          <g stroke="#6C8CA3" stroke-width="1" opacity="0.35">
+            <line x1="245" y1="204" x2="245" y2="220"/>
+            <line x1="300" y1="204" x2="300" y2="220"/>
+            <line x1="355" y1="204" x2="355" y2="220"/>
+            <line x1="410" y1="204" x2="410" y2="220"/>
+            <line x1="465" y1="204" x2="465" y2="220"/>
+            <line x1="520" y1="204" x2="520" y2="220"/>
+            <line x1="575" y1="204" x2="575" y2="220"/>
           </g>
-          <g fill="#B5713A" opacity="0.8">
-            <ellipse cx="270" cy="192" rx="6" ry="3.5" transform="rotate(10 270 192)"/>
-            <ellipse cx="345" cy="163" rx="6" ry="3.5" transform="rotate(-14 345 163)"/>
-            <ellipse cx="415" cy="155" rx="6" ry="3.5" transform="rotate(8 415 155)"/>
-            <ellipse cx="500" cy="178" rx="6" ry="3.5" transform="rotate(-10 500 178)"/>
-            <ellipse cx="245" cy="196" rx="5" ry="3" transform="rotate(6 245 196)"/>
-          </g>
-
-          <!-- tie-down straps -->
-          <line x1="255" y1="175" x2="220" y2="215" stroke="#F5F3EC" stroke-width="2.5" stroke-dasharray="5 5" opacity="0.85"/>
-          <line x1="385" y1="140" x2="385" y2="215" stroke="#F5F3EC" stroke-width="2.5" stroke-dasharray="5 5" opacity="0.85"/>
-          <line x1="520" y1="165" x2="565" y2="215" stroke="#F5F3EC" stroke-width="2.5" stroke-dasharray="5 5" opacity="0.85"/>
 
           <!-- cab -->
           <rect x="20" y="222" width="175" height="8" rx="2" fill="#1c262b"/>
-          <path d="M40 224 V152 Q40 122 68 122 H168 Q182 122 182 138 V178 H190 V224 H40 Z" fill="#7A1F2E"/>
+          <path d="M40 224 V152 Q40 122 68 122 H168 Q182 122 182 138 V178 H190 V224 H40 Z" fill="#6B2430"/>
           <path d="M58 132 H166 Q174 132 174 142 V166 H58 V132 Z" fill="#CFE4EE"/>
-          <rect x="58" y="176" width="112" height="46" rx="4" fill="#591721"/>
+          <rect x="58" y="176" width="112" height="46" rx="4" fill="#4E1A23"/>
 
           <!-- mirror + exhaust -->
           <rect x="30" y="138" width="7" height="20" rx="2" fill="#1c262b"/>
@@ -671,8 +757,8 @@
         </g>
 
         <!-- door wordmark (kept unmirrored so the text reads correctly) -->
-        <text x="566" y="196" text-anchor="middle" font-family="Oswald, sans-serif" font-weight="700" font-size="21" fill="#F5F3EC" letter-spacing="1">A-A</text>
-        <text x="566" y="211" text-anchor="middle" font-family="JetBrains Mono, monospace" font-weight="600" font-size="8.5" fill="#3E8FBF" letter-spacing="1.5">TRUCKING LLC</text>
+        <text x="566" y="196" text-anchor="middle" font-family="Oswald, sans-serif" font-weight="700" font-size="21" fill="#F7F6F2" letter-spacing="1">A-A</text>
+        <text x="566" y="211" text-anchor="middle" font-family="JetBrains Mono, monospace" font-weight="600" font-size="8.5" fill="#6C8CA3" letter-spacing="1.5">TRUCKING LLC</text>
       </svg>
     </div>
   </div>
@@ -682,7 +768,7 @@
       <div class="stat"><div class="num">98.6%</div><div class="lab">On-time delivery</div></div>
       <div class="stat"><div class="num">24/7</div><div class="lab">Dispatch line</div></div>
       <div class="stat"><div class="num">15+</div><div class="lab">Years hauling</div></div>
-      <div class="stat"><div class="num">4</div><div class="lab">Regions served</div></div>
+      <div class="stat"><div class="num">19</div><div class="lab">States covered</div></div>
     </div>
   </div>
 </section>
@@ -691,7 +777,7 @@
   <div class="wrap">
     <span><b>DOT#</b> 0000000 (edit me)</span>
     <span><b>MC#</b> 000000 (edit me)</span>
-    <span><b>Fleet</b> Flatbed · Dry Van · Reefer</span>
+    <span><b>Fleet</b> Flatbed · Step Deck</span>
     <span><b>Based in</b> Your City, ST</span>
   </div>
 </div>
@@ -706,6 +792,19 @@
       <p>Every load gets a dedicated point of contact, live status updates, and a driver who's been vetted, trained, and background-checked.</p>
     </div>
     <div class="services-list" id="servicesList"></div>
+  </div>
+</section>
+
+<section id="why-us" class="why-us">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Why Choose Us</div>
+        <h2>What you get with A-A.</h2>
+      </div>
+      <p>No brokers playing telephone, no surprise fees. Just a carrier that answers the phone and shows up.</p>
+    </div>
+    <div class="why-grid" id="whyGrid"></div>
   </div>
 </section>
 
@@ -752,12 +851,28 @@
   </div>
 </section>
 
+<section class="careers" id="careers">
+  <div class="wrap careers-grid">
+    <div>
+      <div class="eyebrow">Join The Team</div>
+      <h2>Drive for A-A.</h2>
+      <p class="careers-lede">We're always looking for CDL-A drivers who take care of their equipment and their word. Home time that's actually predictable, well-maintained trucks, and dispatch that picks up the phone.</p>
+      <ul class="perk-list" id="perkList"></ul>
+      <a href="mailto:careers@aatruckingllc.com" class="btn btn-primary" id="careersCta">Apply Now</a>
+    </div>
+    <div class="careers-card">
+      <div class="mono">Currently Hiring</div>
+      <div id="openRoles"></div>
+    </div>
+  </div>
+</section>
+
 <section class="coverage" id="coverage">
   <div class="wrap coverage-inner">
     <div>
       <div class="eyebrow">Where We Run</div>
       <h2>Coverage Area</h2>
-      <p style="color:var(--ink-soft); margin-top:14px; max-width:48ch; line-height:1.6;">A-A Trucking runs primarily across four regions. Highlighted states below are regular lanes; everything else is available by request.</p>
+      <p style="color:var(--ink-soft); margin-top:14px; max-width:48ch; line-height:1.6;">A-A Trucking runs the Great Lakes-to-Carolinas corridor as regular lanes. Highlighted states below are our core coverage; everything else is available by request.</p>
       <ul class="region-list" id="regionList"></ul>
     </div>
     <div class="map-box">
@@ -770,12 +885,16 @@
   </div>
 </section>
 
-<section class="contact" id="contact">
-  <div class="wrap contact-grid">
-    <div>
-      <div class="eyebrow">Get In Touch</div>
-      <h2 style="margin-bottom:24px;">Request a quote.</h2>
-
+<section class="contact" id="contact-us">
+  <div class="wrap">
+    <div class="section-head" style="border:none;">
+      <div>
+        <div class="eyebrow">Get In Touch</div>
+        <h2>Contact Us</h2>
+      </div>
+      <p style="color:var(--steel-light);">Real people, real answers — call, email, or stop by the office.</p>
+    </div>
+    <div class="contact-info-grid">
       <div class="contact-card">
         <div class="mono">Call Dispatch</div>
         <a class="big" id="contactPhone" href="tel:+15555550123">(555) 555-0123</a>
@@ -789,8 +908,19 @@
         <div class="big" style="font-size:17px; color:var(--paper);" id="contactAddress">123 Freight Way, Your City, ST 00000</div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div>
+<section class="quote" id="quote">
+  <div class="wrap">
+    <div class="section-head" style="border:none;">
+      <div>
+        <div class="eyebrow">Ready To Ship</div>
+        <h2 style="color:var(--paper);">Get a Quote</h2>
+      </div>
+      <p style="color:var(--steel-light);">Tell us what's moving and where. We'll call or email back with a number.</p>
+    </div>
+    <div class="quote-form-wrap">
       <form id="quoteForm">
         <div class="form-row">
           <div>
@@ -816,11 +946,9 @@
           <div>
             <label for="load">Load type</label>
             <select id="load" name="load">
-              <option>Full Truckload (FTL)</option>
-              <option>Less Than Truckload (LTL)</option>
               <option>Flatbed</option>
-              <option>Refrigerated</option>
-              <option>Expedited</option>
+              <option>Step Deck</option>
+              <option>Oversize / Permit Load</option>
               <option>Other</option>
             </select>
           </div>
@@ -846,10 +974,13 @@
       <div class="logo" style="font-size:17px;">A-A<span>·</span>TRUCKING <small>LLC</small></div>
       <div class="foot-links">
         <a href="#services">Services</a>
+        <a href="#why-us">Why Us</a>
         <a href="#about">About</a>
+        <a href="#careers">Careers</a>
         <a href="#gallery">Gallery</a>
         <a href="#coverage">Coverage</a>
-        <a href="#contact">Contact</a>
+        <a href="#contact-us">Contact</a>
+        <a href="#quote">Get a Quote</a>
       </div>
     </div>
     <div class="foot-fine">
@@ -865,22 +996,21 @@
    ===================================================================== */
 const SITE_CONFIG = {
   contact: {
-    phoneDisplay: "(856) 285-5514",
-    email: "arturoo552@gmail.com",
+    phoneDisplay: "(555) 555-0123",
+    phoneHref: "+15555550123",
+    email: "dispatch@aatruckingllc.com",
+    address: "123 Freight Way, Your City, ST 00000"
   },
 
   services: [
-    { code:"FTL-01", title:"Full Truckload", desc:"One shipper, one trailer, straight through. The fastest way to move a full load with no stops for other freight.", meta:"REGIONAL\nDRY VAN" },
-    { code:"LTL-02", title:"Less Than Truckload", desc:"Smaller shipments that don't need a full trailer, consolidated and priced by space and weight.", meta:"REGIONAL\nSHARED LOAD" },
-    { code:"FLT-03", title:"Flatbed", desc:"Oversized, palletized, or awkward freight that needs an open deck — building materials, machinery, steel.", meta:"OPEN DECK\nTARP AVAIL." },
-    { code:"RFR-04", title:"Refrigerated", desc:"Temperature-controlled trailers for perishables, produce, and anything that can't take a swing in temp.", meta:"TEMP CONTROL\n-20°F TO 70°F" },
-    { code:"EXP-05", title:"Expedited", desc:"Time-critical freight that needs to move now. Dedicated truck, direct route, no detours.", meta:"SAME-DAY\nDIRECT ROUTE" },
-    { code:"WHS-06", title:"Drayage & Warehousing", desc:"Port and rail drayage plus short-term storage for freight in transit between legs of a move.", meta:"PORT / RAIL\nSHORT-TERM" }
+    { code:"FLT-01", title:"Flatbed", desc:"Open-deck hauling for oversized, palletized, or awkward freight — building materials, machinery, steel, coils, and equipment that won't fit in a box trailer.", meta:"OPEN DECK\nTARP AVAIL." },
+    { code:"FLT-02", title:"Step Deck", desc:"Extra clearance for taller loads that exceed standard flatbed height limits, with hydraulic tail options for load/unload.", meta:"OVER-HEIGHT\nHYDRAULIC TAIL" },
+    { code:"FLT-03", title:"Oversize / Permit Loads", desc:"Wide or long freight that needs permits, escort coordination, and route planning handled before pickup.", meta:"PERMITTED\nROUTE PLANNED" }
   ],
 
   // Owner card in the About section
   ownerPhoto: null, // e.g. "images/owner.jpg"
-  ownerName: "Arturo Arriaga",
+  ownerName: "Owner Name",
   ownerRole: "Founder & Operator",
 
   // Gallery — set `img` to a real photo path (e.g. "images/rig-01.jpg")
@@ -895,14 +1025,39 @@ const SITE_CONFIG = {
 
   // Coverage regions shown in the list next to the map
   regions: [
-    { name:"Mid-Atlantic", note:"NY · NJ · PA" },
-    { name:"South Atlantic", note:"DE · MD · VA · WV · NC · SC · GA · FL · DC" },
-    { name:"East North Central", note:"WI · MI · IL · IN · OH" },
-    { name:"East South Central", note:"KY · TN · MS · AL" }
+    { name:"Great Lakes", note:"MI · OH · IN" },
+    { name:"Mid-Atlantic", note:"PA · NY · NJ · MD · DE · DC" },
+    { name:"Appalachia", note:"WV · VA · KY · TN" },
+    { name:"Carolinas", note:"NC" },
+    { name:"New England", note:"NH · VT · MA · RI · CT (excl. ME)" }
   ],
 
   // Two-letter state codes that light up on the coverage map
-  coverageStates: ["NY","NJ","PA","DE","MD","VA","WV","NC","SC","GA","FL","DC","KY","TN","MS","AL","WI","MI","IL","IN","OH"]
+  coverageStates: ["MI","OH","IN","WV","VA","NC","PA","NY","NJ","MD","DE","DC","KY","TN","NH","VT","MA","RI","CT"],
+
+  // Why Choose Us feature cards
+  whyUs: [
+    { title:"On-Time, Every Time", desc:"Live load updates and a dispatch team that calls you before you have to call us." },
+    { title:"Fully Licensed & Insured", desc:"Active DOT and MC authority with $1M cargo coverage on every load." },
+    { title:"Experienced Drivers", desc:"Background-checked, trained, and driving equipment they actually maintain." },
+    { title:"Modern Fleet", desc:"Regularly inspected trucks and trailers — no breakdowns eating your delivery window." },
+    { title:"Direct Communication", desc:"Talk to the person moving your freight, not a rotating cast of call-center reps." },
+    { title:"Family-Owned", desc:"We built this company on repeat customers. Your next load matters as much as your first." }
+  ],
+
+  careersEmail: "careers@aatruckingllc.com",
+  careersPerks: [
+    "Predictable home time",
+    "Well-maintained, late-model equipment",
+    "Weekly pay, direct deposit",
+    "Dispatch that actually answers the phone",
+    "Health benefits after 90 days"
+  ],
+  openRoles: [
+    { title:"CDL-A Flatbed Driver", tag:"Regional" },
+    { title:"CDL-A OTR Driver", tag:"Full-Time" },
+    { title:"Owner-Operator", tag:"Contract" }
+  ]
 };
 
 /* ---------------------------------------------------------------- */
@@ -931,6 +1086,37 @@ SITE_CONFIG.services.forEach(s=>{
       <div class="service-meta">${s.meta.split('\n').join('<br>')}</div>
     </div>
   `));
+});
+
+// Why Choose Us
+const whyGrid = document.getElementById('whyGrid');
+const icons = [
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="8" width="12" height="8"/><path d="M14 11h4l4 3v2h-8z"/><circle cx="6" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4l7 7M4 20l7-7M20 4l-7 7M20 20l-7-7"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21v-6a4 4 0 014-4h8a4 4 0 014 4v6"/><circle cx="12" cy="7" r="4"/></svg>'
+];
+SITE_CONFIG.whyUs.forEach((w,i)=>{
+  whyGrid.appendChild(el(`
+    <div class="why-card">
+      <div class="ic">${icons[i % icons.length]}</div>
+      <h3>${w.title}</h3>
+      <p>${w.desc}</p>
+    </div>
+  `));
+});
+
+// Careers
+document.getElementById('careersCta').href = 'mailto:' + SITE_CONFIG.careersEmail;
+const perkList = document.getElementById('perkList');
+SITE_CONFIG.careersPerks.forEach(p=>{
+  perkList.appendChild(el(`<li>${p}</li>`));
+});
+const openRoles = document.getElementById('openRoles');
+SITE_CONFIG.openRoles.forEach(r=>{
+  openRoles.appendChild(el(`<div class="role-row"><span>${r.title}</span><span class="tag">${r.tag}</span></div>`));
 });
 
 // Owner card
@@ -1003,6 +1189,22 @@ document.getElementById('quoteForm').addEventListener('submit', function(e){
 });
 
 document.getElementById('year').textContent = new Date().getFullYear();
+
+// Mobile menu toggle — this is what was missing before; the hamburger
+// button had no click handler, so on narrow screens the nav links were
+// just hidden with nothing to open them.
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+menuBtn.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+navLinks.querySelectorAll('a').forEach(a=>{
+  a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  });
+});
 </script>
 
 </body>
