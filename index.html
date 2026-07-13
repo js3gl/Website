@@ -3,1208 +3,759 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A-A Trucking LLC | Freight Hauled Right, On Time</title>
-<meta name="description" content="A-A Trucking LLC — full truckload, LTL, flatbed, reefer, and expedited freight hauling across the Mid-Atlantic, South Atlantic, East North Central, and East South Central regions.">
+<title>A-A Trucking LLC | Flatbed Freight Carrier</title>
+<meta name="description" content="A-A Trucking LLC — professional flatbed freight carrier serving Michigan, Ohio, West Virginia, Virginia, North Carolina, and the Northeast corridor.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
-<!--
-=====================================================================
-  EDIT-ME QUICK GUIDE
-=====================================================================
-  1. CONTACT INFO / SERVICES / PHOTOS / COVERAGE: everything is
-     controlled from one place — search this file for "SITE_CONFIG"
-     (in the <script> near the bottom). Change phone, email, address,
-     services, and gallery photos there and the whole page rebuilds
-     itself.
-
-  2. PHOTOS: the gallery starts with placeholder tiles (a truck icon
-     + label). To swap in a real photo, open SITE_CONFIG and change
-     an entry's `img` field to the path of your image, e.g.
-     img: "images/truck-01.jpg"
-     Put your image files in the "images" folder next to this
-     index.html file. Recommended: 1200px+ wide, landscape, JPG/PNG.
-     The owner photo works the same way — see `ownerPhoto` below.
-
-  3. COVERAGE MAP: highlighted states are listed in SITE_CONFIG.coverageStates.
-     Add or remove two-letter state codes to change what lights up.
-=====================================================================
--->
-
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    /* brand: oxblood maroon + slate blue + white, kept deliberately muted */
-    --maroon: #6B2430;
-    --maroon-dark: #4E1A23;
-    --sea: #10161C;
-    --sea-2: #1A222A;
-    --blue: #6C8CA3;
-    --blue-dim: #52697A;
-    --paper: #F7F6F2;
-    --paper-2: #EBE7DE;
-    --ink: #1c1f23;
-    --ink-soft: #565d66;
-    --steel: #4b5560;
-    --steel-light: #97A3AC;
-    --line: rgba(255,255,255,0.10);
-    --line-dark: rgba(0,0,0,0.09);
-    --radius: 3px;
-  }
 
-  *{ box-sizing: border-box; }
-  html{ scroll-behavior: smooth; }
-  body{
-    margin:0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'Inter', sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
-  img{ max-width:100%; display:block; }
-  a{ color: inherit; text-decoration: none; }
-  h1,h2,h3,h4{
-    font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    margin: 0;
-    line-height: 1.05;
-  }
-  .mono{ font-family: 'JetBrains Mono', monospace; }
-  .wrap{
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 0 28px;
-  }
-  .eyebrow{
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12.5px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--maroon);
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-bottom: 14px;
-  }
-  .eyebrow::before{
-    content:"";
-    width: 22px;
-    height: 2px;
-    background: var(--maroon);
-    display:inline-block;
-  }
-  :focus-visible{
-    outline: 3px solid var(--blue);
-    outline-offset: 2px;
-  }
-  @media (prefers-reduced-motion: reduce){
-    *{ animation: none !important; transition: none !important; }
-  }
+/* =========================================================
+   ADDING YOUR PHOTOS
+   Place image files in an "images" folder next to this file,
+   using these exact names — they'll appear automatically:
 
-  /* ---------- lane divider (signature element) ---------- */
-  .lane{
-    position:relative;
-    height: 34px;
-    background: var(--sea);
-    overflow: hidden;
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
-  }
-  .lane::before{
-    content:"";
-    position:absolute;
-    top: 50%;
-    left:0;
-    width: 200%;
-    height: 4px;
-    transform: translateY(-50%);
-    background-image: repeating-linear-gradient(90deg, #ffffff 0 40px, transparent 40px 76px);
-    opacity: .85;
-    animation: drive 3.2s linear infinite;
-  }
-  .lane .rig{
-    position:absolute;
-    top: 50%;
-    left: -60px;
-    transform: translateY(-56%);
-    animation: rigmove 9s linear infinite;
-    filter: drop-shadow(0 2px 2px rgba(0,0,0,.5));
-  }
-  @keyframes drive{ from{ transform: translateY(-50%) translateX(0);} to{ transform: translateY(-50%) translateX(-76px);} }
-  @keyframes rigmove{ from{ left:-60px; } to{ left: 105%; } }
+   images/hero.jpg              full-width hero — truck on the highway
+   images/why-choose-us.jpg     semi truck — "Why Choose Us" section
+   images/flatbed-deliver.jpg   semi truck — "Flatbed" section
+   images/careers-bg.jpg        truck/driver — Start Your Career banner
+   images/about.jpg             yard or company photo
+   images/gallery-1.jpg         load securement
+   images/gallery-2.jpg         equipment / machinery load
+   images/gallery-3.jpg         driver + truck
 
-  /* ---------- header ---------- */
-  header{
-    position: sticky;
-    top:0;
-    z-index: 50;
-    background: var(--sea);
-    border-bottom: 1px solid var(--line);
-  }
-  .topbar{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding: 14px 28px;
-    max-width: 1180px;
-    margin: 0 auto;
-  }
-  .logo{
-    color: var(--paper);
-    font-family:'Oswald',sans-serif;
-    font-weight:700;
-    font-size: 21px;
-    letter-spacing: 0.03em;
-    display:flex;
-    align-items:center;
-    gap: 10px;
-  }
-  .logo span{ color: var(--blue); }
-  .logo small{
-    font-family:'JetBrains Mono',monospace;
-    text-transform: none;
-    font-size: 11px;
-    color: var(--steel-light);
-    letter-spacing: 0.05em;
-  }
-  nav{
-    display:flex;
-    align-items:center;
-    gap: 28px;
-  }
-  nav a{
-    color: var(--paper);
-    font-size: 14px;
-    font-weight:500;
-    letter-spacing:0.02em;
-    opacity: 0.85;
-    transition: opacity .15s;
-  }
-  nav a:hover{ opacity:1; color: var(--blue); }
-  .nav-links{ display:flex; gap:26px; }
-  .call-pill{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    background: var(--maroon);
-    color:#fff !important;
-    padding: 9px 16px;
-    border-radius: var(--radius);
-    font-weight:600;
-    font-size: 14px;
-    opacity:1 !important;
-  }
-  .call-pill:hover{ background: var(--maroon-dark); }
-  .menu-btn{
-    display:none;
-    background:none;
-    border:1px solid var(--line);
-    color:var(--paper);
-    width:40px; height:40px;
-    border-radius: var(--radius);
-    font-size: 20px;
-  }
+   Until added, a plain placeholder panel is shown — nothing
+   will appear broken.
+   ========================================================= */
 
-  /* ---------- hero ---------- */
-  .hero{
-    position:relative;
-    background: var(--sea);
-    color: var(--paper);
-    padding: 76px 0 0;
-    overflow:hidden;
-  }
-  .hero-grid{
-    display:grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  .hero h1{
-    font-size: clamp(36px, 5.2vw, 62px);
-    color: var(--paper);
-    max-width: 16ch;
-  }
-  .hero h1 em{
-    font-style:normal;
-    color: var(--blue);
-  }
-  .hero p.lede{
-    font-size: 18px;
-    line-height:1.6;
-    color: var(--steel-light);
-    max-width: 50ch;
-    margin: 20px 0 30px;
-  }
-  .btn-row{ display:flex; gap:14px; flex-wrap:wrap; }
-  .btn{
-    display:inline-flex;
-    align-items:center;
-    gap:9px;
-    padding: 14px 24px;
-    border-radius: var(--radius);
-    font-weight:600;
-    font-size:15px;
-    border: 1px solid transparent;
-    cursor:pointer;
-  }
-  .btn-primary{ background: var(--maroon); color: #fff; }
-  .btn-primary:hover{ background: var(--maroon-dark); }
-  .btn-ghost{ border-color: var(--line); color: var(--paper); }
-  .btn-ghost:hover{ border-color: var(--steel-light); }
+:root{
+  --ink:#161616;
+  --ink-2:#232323;
+  --red:#c41230;
+  --red-dark:#9c0e26;
+  --gray-700:#454545;
+  --gray-500:#6c6c6c;
+  --gray-300:#a3a3a3;
+  --line:#e6e4e1;
+  --bg-alt:#f6f5f2;
+  --paper:#ffffff;
 
-  .rig-stage{
-    width: 100%;
-    max-width: 900px;
-    margin: 34px auto 0;
-  }
-  .rig-stage svg{ width:100%; height:auto; display:block; }
+  --display:'Barlow Condensed', sans-serif;
+  --body:'Inter', sans-serif;
+  --mono:'IBM Plex Mono', monospace;
 
-  .stat-strip{
-    border-top: 1px solid var(--line);
-    background: var(--sea-2);
-  }
-  .stat-strip .wrap{
-    display:grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-  }
-  .stat-strip .stat{
-    padding: 22px 18px;
-    border-left: 1px solid var(--line);
-    text-align:center;
-  }
-  .stat-strip .stat:first-child{ border-left:none; }
-  .stat-strip .num{ font-family:'Oswald',sans-serif; font-size: 27px; color: var(--paper); }
-  .stat-strip .lab{ font-size: 12px; color: var(--steel-light); margin-top:4px; letter-spacing:.03em; }
+  --container:1200px;
+}
 
-  /* ---------- info strip ---------- */
-  .strip{
-    background: var(--paper-2);
-    border-bottom: 1px solid var(--line-dark);
-  }
-  .strip .wrap{
-    display:flex;
-    flex-wrap:wrap;
-    gap: 10px 34px;
-    padding: 16px 28px;
-    justify-content:center;
-    font-family:'JetBrains Mono', monospace;
-    font-size: 12.5px;
-    letter-spacing:.05em;
-    color: var(--ink-soft);
-  }
-  .strip b{ color: var(--ink); }
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--body);
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  font-size:16px;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 32px;}
+section{position:relative;}
+h1,h2,h3,h4{
+  font-family:var(--display);font-weight:700;line-height:1.05;color:var(--ink);
+  text-transform:uppercase; letter-spacing:.005em;
+}
 
-  /* ---------- section shells ---------- */
-  section{ padding: 84px 0; }
-  .section-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    gap: 24px;
-    margin-bottom: 44px;
-  }
-  .section-head h2{
-    font-size: clamp(28px, 3.6vw, 40px);
-    color: var(--ink);
-  }
-  .section-head p{
-    color: var(--ink-soft);
-    max-width: 42ch;
-    font-size:15.5px;
-    line-height:1.55;
-  }
+.eyebrow{
+  font-family:var(--mono);
+  font-size:11.5px;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--red);
+  margin-bottom:12px;
+}
 
-  /* ---------- services (waybill styled) ---------- */
-  .services-list{ border-top: 1px solid var(--line-dark); }
-  .service-row{
-    display:grid;
-    grid-template-columns: 130px 1fr 200px;
-    gap: 24px;
-    align-items:center;
-    padding: 26px 4px;
-    border-bottom: 1px solid var(--line-dark);
-    transition: background .15s;
-  }
-  .service-row:hover{ background: rgba(0,0,0,0.025); }
-  .service-code{
-    font-family:'JetBrains Mono', monospace;
-    font-size: 13px;
-    color: var(--maroon);
-    letter-spacing: .04em;
-  }
-  .service-row h3{
-    font-size: 21px;
-    color: var(--ink);
-    text-transform:none;
-    font-weight:600;
-    margin-bottom:6px;
-  }
-  .service-row p{
-    color: var(--ink-soft);
-    font-size: 14.5px;
-    line-height:1.55;
-    margin:0;
-    max-width: 62ch;
-  }
-  .service-meta{
-    font-family:'JetBrains Mono', monospace;
-    font-size: 12.5px;
-    color: var(--steel);
-    text-align:right;
-    line-height:1.8;
-  }
-  @media (max-width: 760px){
-    .service-row{ grid-template-columns: 1fr; gap:8px; }
-    .service-meta{ text-align:left; }
-  }
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--body);
+  font-size:14.5px;font-weight:700;
+  padding:15px 28px;
+  border-radius:2px;
+  border:2px solid transparent;
+  cursor:pointer;
+  letter-spacing:.02em;
+  transition:background .18s ease, color .18s ease, border-color .18s ease;
+  text-transform:uppercase;
+}
+.btn:active{transform:translateY(1px);}
+.btn-red{background:var(--red);color:#fff;}
+.btn-red:hover{background:var(--red-dark);}
+.btn-outline-dark{border-color:var(--ink);color:var(--ink);}
+.btn-outline-dark:hover{background:var(--ink);color:#fff;}
+.btn-outline-white{border-color:rgba(255,255,255,.55);color:#fff;}
+.btn-outline-white:hover{border-color:#fff;background:rgba(255,255,255,.1);}
+.btn-text{padding:15px 4px; border-bottom:2px solid var(--red);}
+.btn-text-white{color:#fff; border-bottom-color:var(--red);}
 
-  /* ---------- why choose us ---------- */
-  .why-grid{
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    background: var(--line-dark);
-    border: 1px solid var(--line-dark);
-  }
-  .why-card{
-    background: var(--paper);
-    padding: 26px 24px;
-  }
-  .why-card .ic{
-    width: 34px; height:34px;
-    display:flex; align-items:center; justify-content:center;
-    color: var(--maroon);
-    margin-bottom: 14px;
-  }
-  .why-card h3{
-    font-size: 17px;
-    text-transform:none;
-    font-weight:600;
-    color: var(--ink);
-    margin-bottom: 8px;
-  }
-  .why-card p{
-    font-size: 14px;
-    line-height:1.55;
-    color: var(--ink-soft);
-    margin:0;
-  }
-  @media (max-width: 760px){ .why-grid{ grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 500px){ .why-grid{ grid-template-columns: 1fr; } }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{
+  outline:2.5px solid var(--red); outline-offset:2px;
+}
 
-  /* ---------- about ---------- */
-  .about{ background: var(--sea); color: var(--paper); }
-  .about-grid{
-    display:grid;
-    grid-template-columns: 1fr 0.7fr;
-    gap: 60px;
-    align-items:start;
-  }
-  .about h2{ color: var(--paper); font-size: clamp(28px,3.6vw,40px); margin-bottom:18px;}
-  .about p{ color: var(--steel-light); line-height:1.7; font-size: 15.5px; margin-bottom:16px;}
-  .cred-grid{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--line);
-    border:1px solid var(--line);
-    border-radius: var(--radius);
-    overflow:hidden;
-    margin-top: 20px;
-  }
-  .cred{ background: var(--sea-2); padding: 20px; }
-  .cred .mono{ font-size:11.5px; color: var(--blue); text-transform:uppercase; letter-spacing:.1em; }
-  .cred .val{ font-family:'Oswald',sans-serif; font-size: 21px; margin-top:8px; color:var(--paper); }
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
+}
 
-  .owner-card{
-    background: var(--sea-2);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    overflow:hidden;
-  }
-  .owner-photo{
-    aspect-ratio: 4/3;
-    background: linear-gradient(150deg, var(--sea-2), #0a1e28);
-    border-bottom: 1px solid var(--line);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-    gap:10px;
-    color: var(--steel-light);
-    position:relative;
-  }
-  .owner-photo img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  .owner-photo .placeholder-label{
-    font-family:'JetBrains Mono', monospace;
-    font-size:11.5px; letter-spacing:.06em; text-transform:uppercase;
-  }
-  .owner-info{ padding: 18px 20px 22px; }
-  .owner-info .name{ font-family:'Oswald',sans-serif; font-size:19px; color:var(--paper); }
-  .owner-info .role{ font-family:'JetBrains Mono',monospace; font-size:11.5px; color: var(--blue); letter-spacing:.08em; text-transform:uppercase; margin-top:4px; }
+.reveal{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
+.reveal.is-visible{opacity:1; transform:translateY(0);}
 
-  /* ---------- careers ---------- */
-  .careers{ background: var(--sea); color: var(--paper); }
-  .careers-grid{
-    display:grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 56px;
-    align-items:start;
-  }
-  .careers h2{ color: var(--paper); font-size: clamp(28px,3.6vw,40px); margin-bottom:16px; }
-  .careers-lede{ color: var(--steel-light); line-height:1.65; font-size:15.5px; max-width:48ch; margin-bottom:22px; }
-  .perk-list{ list-style:none; margin:0 0 28px; padding:0; display:grid; gap:10px; }
-  .perk-list li{
-    font-size: 14.5px;
-    color: var(--paper);
-    display:flex;
-    align-items:baseline;
-    gap:10px;
-  }
-  .perk-list li::before{
-    content:"—";
-    color: var(--blue);
-    font-family:'JetBrains Mono', monospace;
-  }
-  .careers-card{
-    background: var(--sea-2);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 26px;
-  }
-  .careers-card .mono{ font-size:11.5px; color: var(--blue); text-transform:uppercase; letter-spacing:.1em; margin-bottom:14px; display:block; }
-  .role-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding: 14px 0;
-    border-bottom: 1px solid var(--line);
-    font-size: 14.5px;
-  }
-  .role-row:last-child{ border-bottom:none; }
-  .role-row .tag{
-    font-family:'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--blue);
-    border: 1px solid var(--blue-dim);
-    border-radius: 2px;
-    padding: 3px 8px;
-  }
-  @media (max-width: 900px){ .careers-grid{ grid-template-columns: 1fr; } }
+/* image placeholder */
+.photo{position:relative; overflow:hidden; background:var(--ink-2);}
+.photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.photo.img-missing{display:flex;align-items:center;justify-content:center; background:linear-gradient(155deg, #2a2a2a, #141414);}
+.photo.img-missing img{display:none;}
+.photo.img-missing::after{
+  content: attr(data-caption);
+  font-family:var(--mono); font-size:11px; letter-spacing:.04em; color:#b7b7b7;
+  text-align:center; padding:20px; border:1px dashed rgba(255,255,255,.22); border-radius:3px; max-width:78%;
+}
 
-  /* ---------- gallery ---------- */
-  .gallery-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .g-tile{
-    position:relative;
-    aspect-ratio: 4/3;
-    border-radius: var(--radius);
-    overflow:hidden;
-    background: linear-gradient(150deg, var(--paper-2), #d7d0bd);
-    border: 1px dashed var(--steel-light);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-    gap:10px;
-    color: var(--steel);
-  }
-  .g-tile img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  .g-tile .placeholder-label{
-    font-family:'JetBrains Mono', monospace;
-    font-size:12px; letter-spacing:.06em; text-transform:uppercase;
-  }
-  @media (max-width: 760px){ .gallery-grid{ grid-template-columns: repeat(2,1fr); } }
+/* =================== HEADER =================== */
+header{
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  background:rgba(255,255,255,.98);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 32px;
+  max-width:var(--container); margin:0 auto;
+}
+.logo{display:flex; align-items:center; gap:12px; color:var(--ink);}
+.logo .mark{
+  font-family:var(--display); font-weight:700; font-size:30px; letter-spacing:.01em; color:var(--ink);
+  line-height:1;
+}
+.logo .mark span{color:var(--red);}
+.logo .tagline{display:block; font-family:var(--mono); font-size:9.5px; font-weight:500; letter-spacing:.14em; color:var(--gray-500); text-transform:uppercase; margin-top:2px;}
 
-  /* ---------- coverage ---------- */
-  .coverage{ background: var(--paper-2); }
-  .coverage-inner{
-    display:grid;
-    grid-template-columns: 0.85fr 1.15fr;
-    gap: 50px;
-    align-items:center;
-  }
-  .region-list{
-    list-style:none;
-    margin: 20px 0 0;
-    padding:0;
-    display:grid;
-    gap: 10px;
-  }
-  .region-list li{
-    font-family:'JetBrains Mono', monospace;
-    font-size: 13.5px;
-    padding: 12px 14px;
-    border-left: 3px solid var(--blue);
-    background: rgba(62,143,191,0.08);
-    color: var(--ink);
-    display:flex;
-    justify-content:space-between;
-    gap: 10px;
-  }
-  .region-list li span{ color: var(--ink-soft); }
-  .map-box{
-    background: #fff;
-    border: 1px solid var(--line-dark);
-    border-radius: var(--radius);
-    padding: 18px;
-  }
-  .us-grid{
-    display:grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(8, 1fr);
-    gap: 3px;
-    aspect-ratio: 12/8;
-  }
-  .us-tile{
-    display:flex; align-items:center; justify-content:center;
-    font-family:'JetBrains Mono', monospace;
-    font-size: 10.5px;
-    font-weight:600;
-    border-radius: 2px;
-    background: var(--paper);
-    color: var(--ink-soft);
-    border: 1px solid var(--line-dark);
-  }
-  .us-tile.hi{ background: var(--blue); color:#fff; border-color: transparent; }
-  .map-legend{ display:flex; gap:18px; margin-top:14px; flex-wrap:wrap; }
-  .map-legend .item{ display:flex; align-items:center; gap:7px; font-size:12px; color: var(--ink-soft); font-family:'JetBrains Mono',monospace; }
-  .map-legend .sw{ width:12px; height:12px; border-radius:2px; }
+.nav-links{display:flex; align-items:center; gap:28px;}
+.nav-links a{
+  font-family:var(--body); font-size:12.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--gray-700); transition:color .15s ease;
+}
+.nav-links a:hover{color:var(--red);}
 
-  /* ---------- contact ---------- */
-  .contact{ background: var(--sea); color: var(--paper); }
-  .contact h2{ color: var(--paper); }
-  .contact-info-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .contact-card{
-    background: var(--sea-2);
-    border:1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 28px;
-  }
-  .contact-card .mono{ font-size:11.5px; color: var(--blue); letter-spacing:.1em; text-transform:uppercase; }
-  .contact-card .big{ font-family:'Oswald',sans-serif; font-size: 26px; margin-top:8px; }
-  .contact-card a.big{ color: var(--paper); }
-  .contact-card a.big:hover{ color: var(--blue); }
-  @media (max-width: 760px){ .contact-info-grid{ grid-template-columns: 1fr; } }
+.nav-cta{display:flex;align-items:center;gap:16px;}
+.nav-phone{font-family:var(--mono); font-size:13px; font-weight:600; color:var(--ink); display:flex; align-items:center; gap:7px;}
+.nav-phone svg{width:14px;height:14px;stroke:var(--red);}
+.burger{display:none; flex-direction:column; gap:5px; background:none; border:0; cursor:pointer; padding:6px;}
+.burger span{width:22px;height:2px;background:var(--ink);}
 
-  .quote{ background: var(--sea-2); }
-  .quote-form-wrap{ max-width: 720px; }
-
-  form{ display:grid; gap: 14px; }
-  .form-row{ display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
-  label{
-    font-size: 12.5px;
-    font-family:'JetBrains Mono', monospace;
-    text-transform:uppercase;
-    letter-spacing:.06em;
-    color: var(--steel-light);
-    display:block;
-    margin-bottom:6px;
+@media (max-width:960px){
+  .nav-links{
+    position:fixed; inset:64px 0 0 0; background:#fff;
+    flex-direction:column; padding:30px 32px; gap:22px; align-items:flex-start;
+    transform:translateX(100%); transition:transform .3s ease; border-top:1px solid var(--line);
   }
-  input, textarea, select{
-    width:100%;
-    background: var(--sea-2);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 12px 14px;
-    color: var(--paper);
-    font-family:'Inter',sans-serif;
-    font-size: 14.5px;
-  }
-  input:focus, textarea:focus, select:focus{ border-color: var(--blue); }
-  textarea{ resize: vertical; min-height: 110px; }
-  .form-note{ font-size: 12.5px; color: var(--steel-light); margin-top:4px; }
+  .nav-links.open{transform:translateX(0);}
+  .nav-links a{font-size:16px;}
+  .burger{display:flex;}
+  .nav-phone span{display:none;}
+}
 
-  /* ---------- footer ---------- */
-  footer{ background: var(--sea); border-top: 1px solid var(--line); padding: 40px 0 28px; }
-  .foot-grid{ display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap: 24px; }
-  .foot-links{ display:flex; gap:22px; flex-wrap:wrap; }
-  .foot-links a{ color: var(--steel-light); font-size:13.5px; }
-  .foot-links a:hover{ color: var(--blue); }
-  .foot-fine{
-    color: var(--steel-light);
-    font-family:'JetBrains Mono', monospace;
-    font-size: 11.5px;
-    margin-top: 22px;
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:8px;
-    opacity:.7;
-  }
+/* =================== HERO =================== */
+.hero{
+  min-height:94vh;
+  display:flex; align-items:center;
+  padding:120px 0 70px;
+  position:relative; overflow:hidden;
+  color:#fff;
+}
+.hero .photo{position:absolute; inset:0; z-index:0;}
+.hero .photo.img-missing{background:linear-gradient(155deg, #262626, #101010);}
+.hero::after{
+  content:"";
+  position:absolute; inset:0; z-index:1;
+  background:linear-gradient(90deg, rgba(10,10,10,.86) 0%, rgba(10,10,10,.62) 48%, rgba(10,10,10,.3) 100%);
+}
+.hero-inner{max-width:var(--container); margin:0 auto; padding:0 32px; position:relative; z-index:2;}
+.hero-content{max-width:640px;}
+.hero .eyebrow{color:#e7a3ad;}
+.hero h1{
+  font-size:clamp(48px, 8vw, 96px);
+  margin-bottom:20px;
+  color:#fff;
+  line-height:.98;
+}
+.hero p.lead{font-size:18px; max-width:500px; margin-bottom:36px; color:#e2e2e2;}
+.hero-actions{display:flex; gap:14px; flex-wrap:wrap; align-items:center;}
 
-  @media (max-width: 900px){
-    .about-grid, .contact-grid, .coverage-inner{ grid-template-columns: 1fr; }
-    .nav-links{
-      display:none;
-      position:absolute;
-      top:100%; left:0; right:0;
-      background: var(--sea);
-      border-bottom: 1px solid var(--line);
-      flex-direction:column;
-      gap:0;
-      padding: 6px 0;
-    }
-    .nav-links.open{ display:flex; }
-    .nav-links a{
-      padding: 14px 28px;
-      opacity:1;
-      border-top: 1px solid var(--line);
-    }
-    .nav-links a:first-child{ border-top:none; }
-    .menu-btn{ display:block; }
-    .gallery-grid{ grid-template-columns: repeat(2,1fr); }
-    .stat-strip .wrap{ grid-template-columns: 1fr 1fr; }
-    .stat-strip .stat:nth-child(3){ border-left:none; }
-  }
+/* trust marker strip */
+.trust-strip{background:var(--paper); border-bottom:1px solid var(--line);}
+.trust-strip .wrap{display:grid; grid-template-columns:repeat(3,1fr); padding:52px 32px; gap:40px;}
+.trust-item{display:flex; gap:18px; align-items:flex-start;}
+.trust-item .icon{
+  width:46px; height:46px; border-radius:50%; background:var(--bg-alt); border:1px solid var(--line);
+  display:flex; align-items:center; justify-content:center; flex:0 0 auto;
+}
+.trust-item .icon svg{width:22px;height:22px; stroke:var(--red);}
+.trust-item h4{font-size:19px; margin-bottom:6px; letter-spacing:0;}
+.trust-item p{font-size:14px; color:var(--gray-500); text-transform:none;}
+@media (max-width:860px){
+  .trust-strip .wrap{grid-template-columns:1fr; gap:28px;}
+}
 
-  /* keep anchored sections clear of the sticky header when jumping to them */
-  section[id], div[id="contact-us"]{ scroll-margin-top: 76px; }
+/* =================== SPLIT NARRATIVE SECTIONS =================== */
+.split{padding:110px 0;}
+.split-grid{display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center;}
+.split-grid.reverse .split-photo{order:2;}
+.split-grid.reverse .split-copy{order:1;}
+.split-photo{aspect-ratio:4/3; border-radius:2px;}
+.split-copy p{color:var(--gray-500); font-size:16.5px; margin-bottom:16px; text-transform:none;}
+.split-copy h2{font-size:clamp(34px,4.6vw,54px); margin-bottom:20px; line-height:1;}
+.split-points{margin-top:24px; border-top:1px solid var(--line);}
+.split-points li{
+  display:flex; align-items:center; gap:12px; padding:13px 0; border-bottom:1px solid var(--line);
+  font-size:14.5px; color:var(--ink); text-transform:none;
+}
+.split-points li svg{width:16px;height:16px; stroke:var(--red); flex:0 0 auto;}
+@media (max-width:860px){
+  .split-grid, .split-grid.reverse{grid-template-columns:1fr;}
+  .split-grid.reverse .split-photo, .split-grid.reverse .split-copy{order:0;}
+}
+
+/* =================== STAT ROW =================== */
+.stat-row{background:var(--ink); color:#fff;}
+.stat-row .wrap{display:grid; grid-template-columns:repeat(3,1fr); padding:60px 32px; text-align:center;}
+.stat-row .stat{padding:0 20px; border-left:1px solid rgba(255,255,255,.14);}
+.stat-row .stat:first-child{border-left:none;}
+.stat-row .num{font-family:var(--display); font-size:46px; font-weight:700; color:#fff;}
+.stat-row .label{font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#b7b7b7; margin-top:8px;}
+@media (max-width:760px){
+  .stat-row .wrap{grid-template-columns:1fr; gap:26px;}
+  .stat-row .stat{border-left:none; border-top:1px solid rgba(255,255,255,.14); padding-top:20px;}
+  .stat-row .stat:first-child{border-top:none; padding-top:0;}
+}
+
+/* =================== SECTION HEADS =================== */
+.section-head{max-width:640px; margin-bottom:56px;}
+.section-head.center{max-width:660px; margin-left:auto; margin-right:auto; text-align:center;}
+.section-head h2{font-size:clamp(32px,4vw,46px);}
+.section-head p{font-size:16.5px; color:var(--gray-500); margin-top:14px; text-transform:none;}
+.section-pad{padding:110px 0;}
+.on-alt{background:var(--bg-alt);}
+
+/* =================== SERVICES =================== */
+.services-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+.service-card{background:var(--paper); padding:36px 32px;}
+.service-card .icon{width:40px;height:40px; border-radius:50%; background:var(--bg-alt); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; margin-bottom:18px;}
+.service-card .icon svg{width:19px;height:19px; stroke:var(--red);}
+.service-card h3{font-size:20px; margin-bottom:9px; letter-spacing:0;}
+.service-card p{color:var(--gray-500); font-size:14.5px; text-transform:none;}
+@media (max-width:860px){ .services-grid{grid-template-columns:1fr 1fr;} }
+@media (max-width:560px){ .services-grid{grid-template-columns:1fr;} }
+
+/* =================== COVERAGE =================== */
+.coverage-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
+.coverage-panel{background:#fff; padding:40px 38px;}
+.coverage-panel.dark{background:var(--ink); color:#fff;}
+.coverage-panel h3{font-size:15px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:22px; padding-bottom:16px; border-bottom:1px solid var(--line); font-family:var(--mono); font-weight:600;}
+.coverage-panel.dark h3{color:#fff; border-bottom-color:rgba(255,255,255,.15);}
+.state-row{display:flex; align-items:center; gap:14px; padding:11px 0;}
+.state-row .abbr{
+  font-family:var(--mono); font-weight:600; font-size:12.5px;
+  width:34px; height:26px; display:flex; align-items:center; justify-content:center;
+  border:1px solid var(--line); border-radius:2px; color:var(--ink); flex:0 0 auto;
+}
+.coverage-panel.dark .state-row .abbr{border-color:rgba(255,255,255,.22); color:#fff;}
+.state-row .name{font-size:15px; font-weight:500; text-transform:none; font-family:var(--body);}
+.state-row .tag{font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; color:var(--gray-500); margin-left:auto; text-transform:uppercase;}
+.coverage-panel.dark .state-row .tag{color:#b7b7b7;}
+
+.ext-grid{display:grid; grid-template-columns:1fr 1fr; gap:0 20px;}
+.excl-note{
+  margin-top:22px; padding-top:18px; border-top:1px solid rgba(255,255,255,.15);
+  font-family:var(--mono); font-size:12px; color:#b7b7b7; letter-spacing:.02em; text-transform:none;
+}
+.excl-note strong{color:#fff;}
+@media (max-width:860px){
+  .coverage-grid{grid-template-columns:1fr;}
+  .ext-grid{grid-template-columns:1fr;}
+}
+
+/* =================== GALLERY =================== */
+.gallery-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+.gallery-grid .photo{aspect-ratio:4/5; border-radius:2px;}
+@media (max-width:860px){ .gallery-grid{grid-template-columns:1fr 1fr;} }
+
+/* =================== CAREERS BANNER =================== */
+.careers-banner{
+  position:relative; color:#fff; padding:110px 32px; text-align:center; overflow:hidden;
+}
+.careers-banner .photo{position:absolute; inset:0; z-index:0;}
+.careers-banner .photo.img-missing{background:linear-gradient(155deg, #262626, #101010);}
+.careers-banner::after{content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(10,10,10,.55), rgba(10,10,10,.86));}
+.careers-banner .inner{position:relative; z-index:2; max-width:600px; margin:0 auto;}
+.careers-banner .eyebrow{justify-content:center; display:flex; color:#e7a3ad;}
+.careers-banner h2{color:#fff; font-size:clamp(34px,5vw,56px); margin-bottom:18px;}
+.careers-banner p{color:#dcdcdc; margin:0 auto 30px; font-size:16.5px; text-transform:none;}
+
+/* =================== CAREERS =================== */
+.careers-wrap{display:grid; grid-template-columns:1fr 1fr; gap:56px;}
+.job-card{border:1px solid var(--line); border-radius:2px; padding:30px 32px; margin-bottom:18px; background:#fff;}
+.job-card .job-top{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom:8px;}
+.job-card h3{font-size:21px; letter-spacing:0;}
+.job-card .job-type{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.05em; text-transform:uppercase;
+  background:var(--bg-alt); border:1px solid var(--line); padding:5px 10px; border-radius:20px; white-space:nowrap; color:var(--gray-700);
+}
+.job-card > p{color:var(--gray-500); font-size:14.5px; margin-bottom:14px; text-transform:none;}
+.job-card ul{margin:0 0 18px; display:grid; gap:8px;}
+.job-card li{font-size:14px; color:var(--gray-500); padding-left:16px; position:relative; text-transform:none;}
+.job-card li::before{content:"–"; position:absolute; left:0; color:var(--red);}
+
+.perk-list{border-top:1px solid var(--line); margin-top:8px;}
+.perk-list li{display:flex; align-items:center; gap:12px; padding:13px 0; border-bottom:1px solid var(--line); font-size:14.5px; text-transform:none;}
+.perk-list li svg{width:15px;height:15px; stroke:var(--red); flex:0 0 auto;}
+@media (max-width:860px){ .careers-wrap{grid-template-columns:1fr;} }
+
+/* =================== CONTACT =================== */
+.contact-wrap{display:grid; grid-template-columns:.85fr 1.15fr; gap:56px;}
+.contact-info-card{background:var(--ink); color:#fff; border-radius:2px; padding:38px 34px;}
+.contact-info-card h3{font-size:22px; color:#fff; margin-bottom:20px;}
+.info-row{display:flex; gap:14px; padding:15px 0; border-bottom:1px solid rgba(255,255,255,.1);}
+.info-row:last-child{border-bottom:none;}
+.info-row svg{width:18px;height:18px;stroke:var(--red); flex:0 0 auto; margin-top:2px;}
+.info-row .lbl{font-family:var(--mono); font-size:10px; letter-spacing:.07em; text-transform:uppercase; color:#b7b7b7; margin-bottom:3px;}
+.info-row .val{font-size:14.5px;}
+.info-row .val small{display:block; font-family:var(--mono); font-size:11px; color:#b7b7b7; margin-top:3px;}
+
+form{background:#fff; border:1px solid var(--line); border-radius:2px; padding:38px 36px;}
+.form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+.field{margin-bottom:16px;}
+.field label{display:block; font-family:var(--mono); font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--gray-500); margin-bottom:7px;}
+.field input, .field select, .field textarea{
+  width:100%; padding:12px 13px; border:1.4px solid var(--line); border-radius:2px;
+  font-family:var(--body); font-size:14.5px; background:var(--bg-alt); color:var(--ink);
+  transition:border-color .15s ease;
+}
+.field input:focus, .field select:focus, .field textarea:focus{border-color:var(--red); outline:none; background:#fff;}
+.field textarea{resize:vertical; min-height:100px;}
+.form-note{font-size:12px; color:var(--gray-500); margin-top:12px;}
+@media (max-width:900px){
+  .contact-wrap{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+}
+
+/* =================== FOOTER =================== */
+footer{background:#0c0c0c; color:#a3a3a3; padding:56px 0 24px; border-top:3px solid var(--red);}
+.footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:48px; margin-bottom:42px;}
+.footer-grid h4{color:#fff; font-size:13px; letter-spacing:.06em; text-transform:uppercase; margin-bottom:15px; font-family:var(--body); font-weight:700;}
+.footer-grid p{font-size:13.5px; max-width:320px; line-height:1.7; text-transform:none;}
+.footer-grid a{display:block; font-size:13.5px; padding:5px 0; color:#a3a3a3; transition:color .15s;}
+.footer-grid a:hover{color:#fff;}
+.footer-legal{
+  border-top:1px solid rgba(255,255,255,.1); padding-top:20px;
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  font-family:var(--mono); font-size:11.5px;
+}
+@media (max-width:760px){ .footer-grid{grid-template-columns:1fr;} }
+
 </style>
 </head>
 <body>
 
 <header>
-  <div class="topbar">
-    <div class="logo">
-      <svg width="30" height="20" viewBox="0 0 46 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="1" y="6" width="20" height="10" rx="1.5" fill="#6B2430"/>
-        <rect x="23" y="9" width="22" height="7" rx="1" fill="#6C8CA3"/>
-        <circle cx="10" cy="18" r="3" fill="#10161C" stroke="#F7F6F2" stroke-width="1.2"/>
-        <circle cx="36" cy="18" r="3" fill="#10161C" stroke="#F7F6F2" stroke-width="1.2"/>
-      </svg>
-      A-A<span>·</span>TRUCKING <small>LLC</small>
+  <nav class="nav">
+    <a href="#top" class="logo">
+      <span>
+        <span class="mark">A-A <span>TRUCKING</span></span>
+        <span class="tagline">Driven By The Best</span>
+      </span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#coverage">Coverage</a></li>
+      <li><a href="#careers">Careers</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="nav-phone" href="tel:+15555550123">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>(555) 555-0123</span>
+      </a>
+      <a href="#careers" class="btn btn-red" style="padding:11px 20px; font-size:12.5px;">Driver Application</a>
+      <button class="burger" id="burgerBtn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
-    <nav>
-      <div class="nav-links" id="navLinks">
-        <a href="#services">Services</a>
-        <a href="#why-us">Why Us</a>
-        <a href="#about">About</a>
-        <a href="#careers">Careers</a>
-        <a href="#coverage">Coverage</a>
-        <a href="#contact-us">Contact</a>
-        <a href="#quote">Get a Quote</a>
-      </div>
-      <a class="call-pill" id="headerPhone" href="tel:+15555550123">📞 (555) 555-0123</a>
-    </nav>
-    <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">☰</button>
-  </div>
+  </nav>
 </header>
 
-<div class="lane" aria-hidden="true">
-  <svg class="rig" width="46" height="22" viewBox="0 0 46 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="1" y="6" width="20" height="10" rx="1.5" fill="#6B2430"/>
-    <rect x="23" y="9" width="22" height="7" rx="1" fill="#6C8CA3"/>
-    <circle cx="10" cy="18" r="3" fill="#10161C" stroke="#F7F6F2" stroke-width="1.2"/>
-    <circle cx="36" cy="18" r="3" fill="#10161C" stroke="#F7F6F2" stroke-width="1.2"/>
-  </svg>
-</div>
+<main id="top">
 
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="eyebrow">Licensed &amp; Insured Motor Carrier</div>
-      <h1>Freight moves.<br><em>Deadlines don't.</em></h1>
-      <p class="lede">A-A Trucking LLC runs flatbed freight from Michigan and Ohio down through the Mid-Atlantic into Virginia and the Carolinas, with clean equipment and drivers who show up when they say they will.</p>
-      <div class="btn-row">
-        <a href="#quote" class="btn btn-primary">Get a Quote</a>
-        <a href="#services" class="btn btn-ghost">See What We Haul →</a>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="photo" data-caption="PHOTO — Full-width hero, truck on the highway (images/hero.jpg)">
+      <img src="images/hero.jpg" alt="A-A Trucking LLC flatbed truck on the highway" onerror="this.closest('.photo').classList.add('img-missing')">
+    </div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="eyebrow">Licensed &amp; Insured Flatbed Carrier</div>
+        <h1>Driven by<br>the best.</h1>
+        <p class="lead">A-A Trucking LLC hauls steel, machinery, and building materials across Michigan, Ohio, West Virginia, Virginia, North Carolina, and the Northeast corridor.</p>
+        <div class="hero-actions">
+          <a href="#careers" class="btn btn-red">Driver Application</a>
+          <a href="#contact" class="btn btn-outline-white">Call A Recruiter</a>
+          <a href="#why" class="btn-text btn-text-white" style="font-size:13.5px; font-weight:700; text-transform:uppercase; letter-spacing:.04em;">Explore A-A Trucking</a>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="rig-stage">
-      <!-- Flatbed semi illustration, brand wordmark on the door -->
-      <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="345" cy="272" rx="320" ry="12" fill="#000000" opacity="0.28"/>
-
-        <!-- everything below is mirrored so the cab lands on the right -->
-        <g transform="scale(-1,1) translate(-680,0)">
-
-          <!-- frame rail -->
-          <rect x="55" y="222" width="580" height="10" rx="2" fill="#2c3d47"/>
-
-          <!-- flatbed deck -->
-          <rect x="205" y="204" width="435" height="16" rx="2" fill="#1A222A" stroke="#6C8CA3" stroke-width="2"/>
-          <g stroke="#6C8CA3" stroke-width="1" opacity="0.35">
-            <line x1="245" y1="204" x2="245" y2="220"/>
-            <line x1="300" y1="204" x2="300" y2="220"/>
-            <line x1="355" y1="204" x2="355" y2="220"/>
-            <line x1="410" y1="204" x2="410" y2="220"/>
-            <line x1="465" y1="204" x2="465" y2="220"/>
-            <line x1="520" y1="204" x2="520" y2="220"/>
-            <line x1="575" y1="204" x2="575" y2="220"/>
-          </g>
-
-          <!-- cab -->
-          <rect x="20" y="222" width="175" height="8" rx="2" fill="#1c262b"/>
-          <path d="M40 224 V152 Q40 122 68 122 H168 Q182 122 182 138 V178 H190 V224 H40 Z" fill="#6B2430"/>
-          <path d="M58 132 H166 Q174 132 174 142 V166 H58 V132 Z" fill="#CFE4EE"/>
-          <rect x="58" y="176" width="112" height="46" rx="4" fill="#4E1A23"/>
-
-          <!-- mirror + exhaust -->
-          <rect x="30" y="138" width="7" height="20" rx="2" fill="#1c262b"/>
-          <rect x="196" y="80" width="10" height="98" rx="2" fill="#4b5560"/>
-          <rect x="193" y="74" width="16" height="10" rx="2" fill="#1c262b"/>
-
-          <!-- wheels -->
-          <circle cx="95" cy="246" r="24" fill="#111b20"/>
-          <circle cx="95" cy="246" r="10" fill="#c9d3d8"/>
-          <circle cx="165" cy="246" r="24" fill="#111b20"/>
-          <circle cx="165" cy="246" r="10" fill="#c9d3d8"/>
-          <circle cx="470" cy="246" r="24" fill="#111b20"/>
-          <circle cx="470" cy="246" r="10" fill="#c9d3d8"/>
-          <circle cx="530" cy="246" r="24" fill="#111b20"/>
-          <circle cx="530" cy="246" r="10" fill="#c9d3d8"/>
-        </g>
-
-        <!-- door wordmark (kept unmirrored so the text reads correctly) -->
-        <text x="566" y="196" text-anchor="middle" font-family="Oswald, sans-serif" font-weight="700" font-size="21" fill="#F7F6F2" letter-spacing="1">A-A</text>
-        <text x="566" y="211" text-anchor="middle" font-family="JetBrains Mono, monospace" font-weight="600" font-size="8.5" fill="#6C8CA3" letter-spacing="1.5">TRUCKING LLC</text>
-      </svg>
-    </div>
-  </div>
-
-  <div class="stat-strip">
+  <!-- TRUST MARKERS -->
+  <section class="trust-strip">
     <div class="wrap">
-      <div class="stat"><div class="num">98.6%</div><div class="lab">On-time delivery</div></div>
-      <div class="stat"><div class="num">24/7</div><div class="lab">Dispatch line</div></div>
-      <div class="stat"><div class="num">15+</div><div class="lab">Years hauling</div></div>
-      <div class="stat"><div class="num">19</div><div class="lab">States covered</div></div>
-    </div>
-  </div>
-</section>
-
-<div class="strip">
-  <div class="wrap">
-    <span><b>DOT#</b> 0000000 (edit me)</span>
-    <span><b>MC#</b> 000000 (edit me)</span>
-    <span><b>Fleet</b> Flatbed · Step Deck</span>
-    <span><b>Based in</b> Your City, ST</span>
-  </div>
-</div>
-
-<section id="services">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <div class="eyebrow">What We Haul</div>
-        <h2>Services</h2>
+      <div class="trust-item reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 4 8.5 9 9 5-.5 9-4 9-9V7l-9-5z"/></svg></div>
+        <div><h4>Licensed &amp; Insured</h4><p>DOT and MC authority in good standing, with full cargo coverage.</p></div>
       </div>
-      <p>Every load gets a dedicated point of contact, live status updates, and a driver who's been vetted, trained, and background-checked.</p>
+      <div class="trust-item reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div>
+        <div><h4>Safety First</h4><p>WSTM-trained drivers and equipment on a strict inspection schedule.</p></div>
+      </div>
+      <div class="trust-item reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div><h4>24/7 Dispatch</h4><p>A direct dispatcher, reachable day or night — not a call center.</p></div>
+      </div>
     </div>
-    <div class="services-list" id="servicesList"></div>
-  </div>
-</section>
+  </section>
 
-<section id="why-us" class="why-us">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
+  <!-- WHY CHOOSE US — photo left, copy right -->
+  <section class="split" id="why">
+    <div class="wrap split-grid">
+      <div class="photo split-photo reveal" data-caption="PHOTO — A-A Trucking semi on the highway (images/why-choose-us.jpg)">
+        <img src="images/why-choose-us.jpg" alt="A-A Trucking LLC semi truck on the highway" onerror="this.closest('.photo').classList.add('img-missing')">
+      </div>
+      <div class="split-copy reveal">
         <div class="eyebrow">Why Choose Us</div>
-        <h2>What you get with A-A.</h2>
+        <h2>Your trucking partner.</h2>
+        <p style="text-transform:none;">A-A Trucking LLC hauls freight that doesn't fit in a box — structural steel, coil, heavy machinery, and building materials. Every load is secured to spec and tracked from pickup to delivery.</p>
+        <p style="text-transform:none;">We operate a focused regional network across our primary states, backed by a dispatch team that's reachable directly and equipment maintained on a strict inspection schedule.</p>
+        <a href="#services" class="btn btn-outline-dark" style="margin-top:10px;">Explore A-A Trucking</a>
       </div>
-      <p>No brokers playing telephone, no surprise fees. Just a carrier that answers the phone and shows up.</p>
     </div>
-    <div class="why-grid" id="whyGrid"></div>
-  </div>
-</section>
+  </section>
 
-<section class="about" id="about">
-  <div class="wrap about-grid">
-    <div>
-      <div class="eyebrow">Who We Are</div>
-      <h2>Built on showing up.</h2>
-      <p>A-A Trucking LLC is a family-run motor carrier hauling freight for shippers who need it done right the first time. We keep our fleet small enough to know every driver by name, and every load gets tracked from pickup to delivery.</p>
-      <p>Replace this paragraph with your company's real story — when you started, what you specialize in, and why customers keep coming back. Keep it short and specific; two tight paragraphs beat one long one.</p>
-      <div class="cred-grid">
-        <div class="cred"><div class="mono">Authority</div><div class="val">DOT / MC Active</div></div>
-        <div class="cred"><div class="mono">Insurance</div><div class="val">$1M Cargo</div></div>
-        <div class="cred"><div class="mono">Fleet Size</div><div class="val">12 Power Units</div></div>
-        <div class="cred"><div class="mono">Safety Rating</div><div class="val">Satisfactory</div></div>
+  <!-- FLATBED — copy left, photo right -->
+  <section class="split on-alt">
+    <div class="wrap split-grid reverse">
+      <div class="split-copy reveal">
+        <div class="eyebrow">Flatbed Freight</div>
+        <h2>Deliver freight. Shipped right.</h2>
+        <p style="text-transform:none;">From structural steel to oversized machinery, our flatbeds handle freight that standard vans can't. Loads are chained, tarped, and inspected before they ever leave the yard.</p>
+        <p style="text-transform:none;">Straight talk on capacity, honest transit times, and a driver who shows up when they say they will.</p>
+        <a href="#services" class="btn btn-outline-dark" style="margin-top:10px;">See Our Services</a>
+      </div>
+      <div class="photo split-photo reveal" data-caption="PHOTO — A-A Trucking semi, flatbed loaded (images/flatbed-deliver.jpg)">
+        <img src="images/flatbed-deliver.jpg" alt="A-A Trucking LLC flatbed semi truck with a secured load" onerror="this.closest('.photo').classList.add('img-missing')">
       </div>
     </div>
-    <div class="owner-card">
-      <div class="owner-photo" id="ownerPhotoBox">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-          <circle cx="12" cy="8" r="4"/>
-          <path d="M4 20c0-4 3.5-7 8-7s8 3 8 7"/>
-        </svg>
-        <div class="placeholder-label">Owner Photo</div>
-      </div>
-      <div class="owner-info">
-        <div class="name" id="ownerName">Owner Name</div>
-        <div class="role" id="ownerRole">Founder &amp; Operator</div>
-      </div>
+  </section>
+
+  <!-- STAT ROW -->
+  <div class="stat-row">
+    <div class="wrap">
+      <div class="stat"><div class="num">10+</div><div class="label">Years Hauling Freight</div></div>
+      <div class="stat"><div class="num">24/7/365</div><div class="label">Live Dispatch Support</div></div>
+      <div class="stat"><div class="num">Top Pay</div><div class="label">For Our Drivers</div></div>
     </div>
   </div>
-</section>
 
-<section id="gallery">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <div class="eyebrow">On the Road</div>
-        <h2>Gallery</h2>
+  <!-- SERVICES -->
+  <section class="section-pad" id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">What We Haul</div>
+        <h2>Flatbed services</h2>
+        <p>Freight that's heavy, oversized, or irregularly shaped — hauled by drivers who know how to secure it properly.</p>
       </div>
-      <p>Photos of the fleet, drivers, and freight in motion. Swap these placeholders for your own — see the note at the top of this file.</p>
-    </div>
-    <div class="gallery-grid" id="galleryGrid"></div>
-  </div>
-</section>
-
-<section class="careers" id="careers">
-  <div class="wrap careers-grid">
-    <div>
-      <div class="eyebrow">Join The Team</div>
-      <h2>Drive for A-A.</h2>
-      <p class="careers-lede">We're always looking for CDL-A drivers who take care of their equipment and their word. Home time that's actually predictable, well-maintained trucks, and dispatch that picks up the phone.</p>
-      <ul class="perk-list" id="perkList"></ul>
-      <a href="mailto:careers@aatruckingllc.com" class="btn btn-primary" id="careersCta">Apply Now</a>
-    </div>
-    <div class="careers-card">
-      <div class="mono">Currently Hiring</div>
-      <div id="openRoles"></div>
-    </div>
-  </div>
-</section>
-
-<section class="coverage" id="coverage">
-  <div class="wrap coverage-inner">
-    <div>
-      <div class="eyebrow">Where We Run</div>
-      <h2>Coverage Area</h2>
-      <p style="color:var(--ink-soft); margin-top:14px; max-width:48ch; line-height:1.6;">A-A Trucking runs the Great Lakes-to-Carolinas corridor as regular lanes. Highlighted states below are our core coverage; everything else is available by request.</p>
-      <ul class="region-list" id="regionList"></ul>
-    </div>
-    <div class="map-box">
-      <div class="us-grid" id="usGrid"></div>
-      <div class="map-legend">
-        <div class="item"><span class="sw" style="background:var(--blue);"></span> Primary coverage</div>
-        <div class="item"><span class="sw" style="background:var(--paper); border:1px solid var(--line-dark);"></span> By request</div>
+      <div class="services-grid reveal">
+        <div class="service-card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="10" rx="1"/><path d="M3 11h18"/></svg></div>
+          <h3>Steel &amp; Coil</h3>
+          <p>Coil racks and chain-down securement for structural steel, beams, and rolled coil.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+          <h3>Machinery &amp; Equipment</h3>
+          <p>Skid steers, excavators, and industrial machinery hauled with proper weight distribution.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 9h1M9 13h1M14 9h1M14 13h1"/></svg></div>
+          <h3>Building Materials</h3>
+          <p>Lumber, trusses, precast, and palletized materials for job sites on tight schedules.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M12 3v18"/></svg></div>
+          <h3>Oversize &amp; Overweight</h3>
+          <p>Permitted loads with pilot car coordination and route surveys where required.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M3 17V6h9l5 5h4v6"/></svg></div>
+          <h3>Construction Equipment</h3>
+          <p>Low-boy and RGN capacity for dozers, loaders, and other heavy site equipment.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+          <h3>Ag &amp; Industrial</h3>
+          <p>Farm equipment and industrial components, secured and delivered on schedule.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="contact" id="contact-us">
-  <div class="wrap">
-    <div class="section-head" style="border:none;">
-      <div>
+  <!-- COVERAGE -->
+  <section class="section-pad on-alt" id="coverage">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Where We Run</div>
+        <h2>Service area</h2>
+        <p>Five primary states form the core of our network, with extended coverage across the surrounding region.</p>
+      </div>
+      <div class="coverage-grid reveal">
+        <div class="coverage-panel dark">
+          <h3>Primary Service States</h3>
+          <div class="state-row"><span class="abbr">MI</span><span class="name">Michigan</span><span class="tag">Core</span></div>
+          <div class="state-row"><span class="abbr">OH</span><span class="name">Ohio</span><span class="tag">Core</span></div>
+          <div class="state-row"><span class="abbr">WV</span><span class="name">West Virginia</span><span class="tag">Core</span></div>
+          <div class="state-row"><span class="abbr">VA</span><span class="name">Virginia</span><span class="tag">Core</span></div>
+          <div class="state-row"><span class="abbr">NC</span><span class="name">North Carolina</span><span class="tag">Core</span></div>
+          <div class="excl-note">These five states carry our tightest transit times and most consistent capacity.</div>
+        </div>
+        <div class="coverage-panel">
+          <h3>Extended Coverage</h3>
+          <div class="ext-grid">
+            <div>
+              <div class="state-row"><span class="abbr">PA</span><span class="name">Pennsylvania</span></div>
+              <div class="state-row"><span class="abbr">NY</span><span class="name">New York</span></div>
+              <div class="state-row"><span class="abbr">NJ</span><span class="name">New Jersey</span></div>
+              <div class="state-row"><span class="abbr">DE</span><span class="name">Delaware</span></div>
+              <div class="state-row"><span class="abbr">MD</span><span class="name">Maryland</span></div>
+              <div class="state-row"><span class="abbr">DC</span><span class="name">Washington, D.C.</span></div>
+            </div>
+            <div>
+              <div class="state-row"><span class="abbr">CT</span><span class="name">Connecticut</span></div>
+              <div class="state-row"><span class="abbr">RI</span><span class="name">Rhode Island</span></div>
+              <div class="state-row"><span class="abbr">MA</span><span class="name">Massachusetts</span></div>
+              <div class="state-row"><span class="abbr">VT</span><span class="name">Vermont</span></div>
+              <div class="state-row"><span class="abbr">NH</span><span class="name">New Hampshire</span></div>
+            </div>
+          </div>
+          <div class="excl-note" style="border-top-color:var(--line); color:var(--gray-500);">Maine is the one state in this region we do not currently service.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLEET / GALLERY -->
+  <section class="section-pad" id="fleet">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Our Fleet</div>
+        <h2>On the road</h2>
+        <p>More of the equipment and drivers behind every load.</p>
+      </div>
+      <div class="gallery-grid reveal">
+        <div class="photo" data-caption="PHOTO — Company yard (images/about.jpg)">
+          <img src="images/about.jpg" alt="A-A Trucking LLC company yard" onerror="this.closest('.photo').classList.add('img-missing')">
+        </div>
+        <div class="photo" data-caption="PHOTO — Load securement (images/gallery-1.jpg)">
+          <img src="images/gallery-1.jpg" alt="Flatbed load securement" onerror="this.closest('.photo').classList.add('img-missing')">
+        </div>
+        <div class="photo" data-caption="PHOTO — Driver with cab (images/gallery-2.jpg)">
+          <img src="images/gallery-2.jpg" alt="A-A Trucking driver beside the truck cab" onerror="this.closest('.photo').classList.add('img-missing')">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAREERS BANNER -->
+  <section class="careers-banner" id="careers">
+    <div class="photo" data-caption="PHOTO — Driver / truck for Start Your Career banner (images/careers-bg.jpg)">
+      <img src="images/careers-bg.jpg" alt="A-A Trucking LLC driver and truck" onerror="this.closest('.photo').classList.add('img-missing')">
+    </div>
+    <div class="inner reveal">
+      <div class="eyebrow">Start Your Career</div>
+      <h2>Become part of our team.</h2>
+      <p>We're hiring CDL-A flatbed drivers who take load securement and on-time delivery seriously. Join a fleet that treats drivers right.</p>
+      <a href="#apply" class="btn btn-red">Get Started</a>
+    </div>
+  </section>
+
+  <!-- CAREERS DETAIL -->
+  <section class="section-pad on-alt">
+    <div class="wrap">
+      <div class="careers-wrap">
+        <div class="reveal">
+          <div class="job-card">
+            <div class="job-top">
+              <h3>Regional Flatbed Driver</h3>
+              <span class="job-type">Full-Time</span>
+            </div>
+            <p>Runs within our core states (MI / OH / WV / VA / NC) — home most weekends.</p>
+            <ul>
+              <li>Valid CDL-A with a clean MVR</li>
+              <li>1+ year flatbed / tarping experience preferred</li>
+              <li>Comfortable with chains, straps, and tarps</li>
+              <li>Passes DOT physical and drug screen</li>
+            </ul>
+            <a href="#apply" class="btn btn-outline-dark" style="padding:11px 20px; font-size:13px;">Apply Now</a>
+          </div>
+          <div class="job-card">
+            <div class="job-top">
+              <h3>OTR Flatbed Driver</h3>
+              <span class="job-type">Full-Time</span>
+            </div>
+            <p>Extended-region lanes across the Northeast corridor — out 7–10 days.</p>
+            <ul>
+              <li>Valid CDL-A, 2+ years OTR experience</li>
+              <li>Flatbed or heavy-haul experience required</li>
+              <li>Reliable, self-directed, safety-minded</li>
+            </ul>
+            <a href="#apply" class="btn btn-outline-dark" style="padding:11px 20px; font-size:13px;">Apply Now</a>
+          </div>
+        </div>
+        <div class="reveal">
+          <h4 style="font-size:15px; margin-bottom:6px; text-transform:uppercase; letter-spacing:.04em; font-family:var(--body); font-weight:700;">What we offer</h4>
+          <ul class="perk-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Competitive mileage pay</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Weekly settlements</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Late-model equipment</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Health insurance options</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Rider and pet policy</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Direct, responsive dispatch</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section-pad" id="contact">
+    <div class="wrap">
+      <div class="section-head reveal">
         <div class="eyebrow">Get In Touch</div>
-        <h2>Contact Us</h2>
+        <h2>Request a rate or apply to drive</h2>
+        <p>Fill out the form below and our dispatch team will respond — usually the same day.</p>
       </div>
-      <p style="color:var(--steel-light);">Real people, real answers — call, email, or stop by the office.</p>
-    </div>
-    <div class="contact-info-grid">
-      <div class="contact-card">
-        <div class="mono">Call Dispatch</div>
-        <a class="big" id="contactPhone" href="tel:+15555550123">(555) 555-0123</a>
-      </div>
-      <div class="contact-card">
-        <div class="mono">Email</div>
-        <a class="big" id="contactEmail" href="mailto:dispatch@aatruckingllc.com" style="font-size:19px;">dispatch@aatruckingllc.com</a>
-      </div>
-      <div class="contact-card">
-        <div class="mono">Office</div>
-        <div class="big" style="font-size:17px; color:var(--paper);" id="contactAddress">123 Freight Way, Your City, ST 00000</div>
-      </div>
-    </div>
-  </div>
-</section>
+      <div class="contact-wrap">
+        <div class="contact-info-card reveal">
+          <h3 style="text-transform:uppercase;">A-A Trucking LLC</h3>
+          <div class="info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><div class="lbl">Headquarters</div><div class="val">[Street Address]<br>[City], MI [ZIP]</div></div>
+          </div>
+          <div class="info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div><div class="lbl">Dispatch</div><div class="val">(555) 555-0123 <small>24/7 dispatch line</small></div></div>
+          </div>
+          <div class="info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+            <div><div class="lbl">Email</div><div class="val">dispatch@aatruckingllc.com</div></div>
+          </div>
+          <div class="info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <div><div class="lbl">Office Hours</div><div class="val">Mon–Fri, 7:00 AM – 6:00 PM ET<small>Dispatch available 24/7</small></div></div>
+          </div>
+          <div class="info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+            <div><div class="lbl">Authority</div><div class="val">MC# [XXXXXX] <small>DOT# [XXXXXXX]</small></div></div>
+          </div>
+        </div>
 
-<section class="quote" id="quote">
-  <div class="wrap">
-    <div class="section-head" style="border:none;">
-      <div>
-        <div class="eyebrow">Ready To Ship</div>
-        <h2 style="color:var(--paper);">Get a Quote</h2>
-      </div>
-      <p style="color:var(--steel-light);">Tell us what's moving and where. We'll call or email back with a number.</p>
-    </div>
-    <div class="quote-form-wrap">
-      <form id="quoteForm">
-        <div class="form-row">
-          <div>
-            <label for="name">Full name</label>
-            <input id="name" name="name" type="text" required placeholder="Jane Smith">
+        <form id="apply" action="mailto:dispatch@aatruckingllc.com" method="POST" enctype="text/plain" class="reveal">
+          <div class="form-row">
+            <div class="field"><label for="name">Full Name</label><input id="name" name="Name" type="text" required></div>
+            <div class="field"><label for="company">Company (if shipper)</label><input id="company" name="Company" type="text"></div>
           </div>
-          <div>
-            <label for="company">Company</label>
-            <input id="company" name="company" type="text" placeholder="Acme Distribution">
+          <div class="form-row">
+            <div class="field"><label for="phone">Phone</label><input id="phone" name="Phone" type="tel" required></div>
+            <div class="field"><label for="email">Email</label><input id="email" name="Email" type="email" required></div>
           </div>
-        </div>
-        <div class="form-row">
-          <div>
-            <label for="phone">Phone</label>
-            <input id="phone" name="phone" type="tel" required placeholder="(555) 555-0123">
-          </div>
-          <div>
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" required placeholder="you@company.com">
-          </div>
-        </div>
-        <div class="form-row">
-          <div>
-            <label for="load">Load type</label>
-            <select id="load" name="load">
-              <option>Flatbed</option>
-              <option>Step Deck</option>
-              <option>Oversize / Permit Load</option>
-              <option>Other</option>
+          <div class="field">
+            <label for="reason">I'm reaching out about</label>
+            <select id="reason" name="Reason">
+              <option>Requesting a shipping quote</option>
+              <option>Driver job application</option>
+              <option>General inquiry</option>
             </select>
           </div>
-          <div>
-            <label for="route">Pickup → Delivery</label>
-            <input id="route" name="route" type="text" placeholder="Columbus, OH → Nashville, TN">
+          <div class="form-row">
+            <div class="field"><label for="origin">Origin (if quote)</label><input id="origin" name="Origin" type="text"></div>
+            <div class="field"><label for="destination">Destination (if quote)</label><input id="destination" name="Destination" type="text"></div>
           </div>
-        </div>
-        <div>
-          <label for="details">Details</label>
-          <textarea id="details" name="details" placeholder="Weight, dimensions, preferred pickup date, anything else we should know."></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary" style="justify-self:start;">Send Request</button>
-        <div class="form-note" id="formNote">This form opens your email client with the details pre-filled — no data is stored anywhere else.</div>
-      </form>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="Message" placeholder="Load details, CDL experience, questions — whatever's useful."></textarea>
+          </div>
+          <button type="submit" class="btn btn-red" style="width:100%; justify-content:center;">Send Message</button>
+          <p class="form-note">Submitting opens your email client addressed to dispatch@aatruckingllc.com. Prefer to call? Dispatch is at (555) 555-0123.</p>
+        </form>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+</main>
 
 <footer>
   <div class="wrap">
-    <div class="foot-grid">
-      <div class="logo" style="font-size:17px;">A-A<span>·</span>TRUCKING <small>LLC</small></div>
-      <div class="foot-links">
+    <div class="footer-grid">
+      <div>
+        <h4>A-A Trucking LLC</h4>
+        <p>A flatbed freight carrier hauling steel, machinery, and building materials across Michigan, Ohio, West Virginia, Virginia, North Carolina, and the Northeast corridor.</p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="#why">Why Us</a>
         <a href="#services">Services</a>
-        <a href="#why-us">Why Us</a>
-        <a href="#about">About</a>
+        <a href="#coverage">Coverage Area</a>
         <a href="#careers">Careers</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#coverage">Coverage</a>
-        <a href="#contact-us">Contact</a>
-        <a href="#quote">Get a Quote</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="tel:+15555550123">(555) 555-0123</a>
+        <a href="mailto:dispatch@aatruckingllc.com">dispatch@aatruckingllc.com</a>
+        <a href="#contact">Request a Quote</a>
       </div>
     </div>
-    <div class="foot-fine">
-      <span>© <span id="year"></span> A-A Trucking LLC. All rights reserved.</span>
-      <span>DOT# 0000000 · MC# 000000 (edit in SITE_CONFIG)</span>
+    <div class="footer-legal">
+      <span>&copy; <span id="year"></span> A-A Trucking LLC. All rights reserved.</span>
+      <span>MC# [XXXXXX] &nbsp;·&nbsp; DOT# [XXXXXXX]</span>
     </div>
   </div>
 </footer>
 
 <script>
-/* =====================================================================
-   SITE_CONFIG — edit everything here. The page builds itself from this.
-   ===================================================================== */
-const SITE_CONFIG = {
-  contact: {
-    phoneDisplay: "(555) 555-0123",
-    phoneHref: "+15555550123",
-    email: "dispatch@aatruckingllc.com",
-    address: "123 Freight Way, Your City, ST 00000"
-  },
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-  services: [
-    { code:"FLT-01", title:"Flatbed", desc:"Open-deck hauling for oversized, palletized, or awkward freight — building materials, machinery, steel, coils, and equipment that won't fit in a box trailer.", meta:"OPEN DECK\nTARP AVAIL." },
-    { code:"FLT-02", title:"Step Deck", desc:"Extra clearance for taller loads that exceed standard flatbed height limits, with hydraulic tail options for load/unload.", meta:"OVER-HEIGHT\nHYDRAULIC TAIL" },
-    { code:"FLT-03", title:"Oversize / Permit Loads", desc:"Wide or long freight that needs permits, escort coordination, and route planning handled before pickup.", meta:"PERMITTED\nROUTE PLANNED" }
-  ],
-
-  // Owner card in the About section
-  ownerPhoto: null, // e.g. "images/owner.jpg"
-  ownerName: "Owner Name",
-  ownerRole: "Founder & Operator",
-
-  // Gallery — set `img` to a real photo path (e.g. "images/rig-01.jpg")
-  gallery: [
-    { label:"Fleet",        img:null },
-    { label:"Loading Dock", img:null },
-    { label:"On the Road",  img:null },
-    { label:"Flatbed Load", img:null },
-    { label:"Reefer Unit",  img:null },
-    { label:"Driver Team",  img:null }
-  ],
-
-  // Coverage regions shown in the list next to the map
-  regions: [
-    { name:"Great Lakes", note:"MI · OH · IN" },
-    { name:"Mid-Atlantic", note:"PA · NY · NJ · MD · DE · DC" },
-    { name:"Appalachia", note:"WV · VA · KY · TN" },
-    { name:"Carolinas", note:"NC" },
-    { name:"New England", note:"NH · VT · MA · RI · CT (excl. ME)" }
-  ],
-
-  // Two-letter state codes that light up on the coverage map
-  coverageStates: ["MI","OH","IN","WV","VA","NC","PA","NY","NJ","MD","DE","DC","KY","TN","NH","VT","MA","RI","CT"],
-
-  // Why Choose Us feature cards
-  whyUs: [
-    { title:"On-Time, Every Time", desc:"Live load updates and a dispatch team that calls you before you have to call us." },
-    { title:"Fully Licensed & Insured", desc:"Active DOT and MC authority with $1M cargo coverage on every load." },
-    { title:"Experienced Drivers", desc:"Background-checked, trained, and driving equipment they actually maintain." },
-    { title:"Modern Fleet", desc:"Regularly inspected trucks and trailers — no breakdowns eating your delivery window." },
-    { title:"Direct Communication", desc:"Talk to the person moving your freight, not a rotating cast of call-center reps." },
-    { title:"Family-Owned", desc:"We built this company on repeat customers. Your next load matters as much as your first." }
-  ],
-
-  careersEmail: "careers@aatruckingllc.com",
-  careersPerks: [
-    "Predictable home time",
-    "Well-maintained, late-model equipment",
-    "Weekly pay, direct deposit",
-    "Dispatch that actually answers the phone",
-    "Health benefits after 90 days"
-  ],
-  openRoles: [
-    { title:"CDL-A Flatbed Driver", tag:"Regional" },
-    { title:"CDL-A OTR Driver", tag:"Full-Time" },
-    { title:"Owner-Operator", tag:"Contract" }
-  ]
-};
-
-/* ---------------------------------------------------------------- */
-
-function el(html){
-  const t = document.createElement('template');
-  t.innerHTML = html.trim();
-  return t.content.firstElementChild;
-}
-
-// Contact info
-document.querySelectorAll('#headerPhone, #contactPhone').forEach(a=>{ a.href = 'tel:' + SITE_CONFIG.contact.phoneHref; });
-document.getElementById('headerPhone').innerHTML = '📞 ' + SITE_CONFIG.contact.phoneDisplay;
-document.getElementById('contactPhone').textContent = SITE_CONFIG.contact.phoneDisplay;
-document.getElementById('contactEmail').textContent = SITE_CONFIG.contact.email;
-document.getElementById('contactEmail').href = 'mailto:' + SITE_CONFIG.contact.email;
-document.getElementById('contactAddress').textContent = SITE_CONFIG.contact.address;
-
-// Services
-const servicesList = document.getElementById('servicesList');
-SITE_CONFIG.services.forEach(s=>{
-  servicesList.appendChild(el(`
-    <div class="service-row">
-      <div class="service-code mono">${s.code}</div>
-      <div><h3>${s.title}</h3><p>${s.desc}</p></div>
-      <div class="service-meta">${s.meta.split('\n').join('<br>')}</div>
-    </div>
-  `));
-});
-
-// Why Choose Us
-const whyGrid = document.getElementById('whyGrid');
-const icons = [
-  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>',
-  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg>',
-  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg>',
-  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="8" width="12" height="8"/><path d="M14 11h4l4 3v2h-8z"/><circle cx="6" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>',
-  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4l7 7M4 20l7-7M20 4l-7 7M20 20l-7-7"/></svg>',
-  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21v-6a4 4 0 014-4h8a4 4 0 014 4v6"/><circle cx="12" cy="7" r="4"/></svg>'
-];
-SITE_CONFIG.whyUs.forEach((w,i)=>{
-  whyGrid.appendChild(el(`
-    <div class="why-card">
-      <div class="ic">${icons[i % icons.length]}</div>
-      <h3>${w.title}</h3>
-      <p>${w.desc}</p>
-    </div>
-  `));
-});
-
-// Careers
-document.getElementById('careersCta').href = 'mailto:' + SITE_CONFIG.careersEmail;
-const perkList = document.getElementById('perkList');
-SITE_CONFIG.careersPerks.forEach(p=>{
-  perkList.appendChild(el(`<li>${p}</li>`));
-});
-const openRoles = document.getElementById('openRoles');
-SITE_CONFIG.openRoles.forEach(r=>{
-  openRoles.appendChild(el(`<div class="role-row"><span>${r.title}</span><span class="tag">${r.tag}</span></div>`));
-});
-
-// Owner card
-if (SITE_CONFIG.ownerPhoto){
-  document.getElementById('ownerPhotoBox').innerHTML = `<img src="${SITE_CONFIG.ownerPhoto}" alt="${SITE_CONFIG.ownerName}">`;
-}
-document.getElementById('ownerName').textContent = SITE_CONFIG.ownerName;
-document.getElementById('ownerRole').textContent = SITE_CONFIG.ownerRole;
-
-// Regions
-const regionList = document.getElementById('regionList');
-SITE_CONFIG.regions.forEach(r=>{
-  regionList.appendChild(el(`<li>${r.name}<span>${r.note}</span></li>`));
-});
-
-// Gallery
-const galleryGrid = document.getElementById('galleryGrid');
-SITE_CONFIG.gallery.forEach(g=>{
-  if(g.img){
-    galleryGrid.appendChild(el(`<div class="g-tile"><img src="${g.img}" alt="${g.label}"></div>`));
-  } else {
-    galleryGrid.appendChild(el(`
-      <div class="g-tile">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-          <rect x="2" y="7" width="13" height="9" rx="1"/>
-          <path d="M15 10h3l3 3v3h-6z"/>
-          <circle cx="6" cy="18" r="1.6"/>
-          <circle cx="17" cy="18" r="1.6"/>
-        </svg>
-        <div class="placeholder-label">${g.label}</div>
-      </div>
-    `));
-  }
-});
-
-// ---------- Coverage map: schematic US tile grid ----------
-// col = west(1) -> east(12), row = north(1) -> south(8)
-// Layout verified against the NYT-derived grid used in kristw/gridmap-layout-usa
-const US_TILES = [
-  {c:"AK",col:1,row:1},{c:"ME",col:12,row:1},
-  {c:"VT",col:10,row:2},{c:"NH",col:11,row:2},{c:"MA",col:12,row:2},
-  {c:"WA",col:2,row:3},{c:"MT",col:3,row:3},{c:"ND",col:4,row:3},{c:"SD",col:5,row:3},{c:"MN",col:6,row:3},{c:"WI",col:7,row:3},{c:"MI",col:8,row:3},{c:"NY",col:10,row:3},{c:"CT",col:11,row:3},{c:"RI",col:12,row:3},
-  {c:"OR",col:2,row:4},{c:"ID",col:3,row:4},{c:"WY",col:4,row:4},{c:"NE",col:5,row:4},{c:"IA",col:6,row:4},{c:"IL",col:7,row:4},{c:"IN",col:8,row:4},{c:"OH",col:9,row:4},{c:"PA",col:10,row:4},{c:"NJ",col:11,row:4},
-  {c:"CA",col:1,row:5},{c:"NV",col:2,row:5},{c:"UT",col:3,row:5},{c:"CO",col:4,row:5},{c:"KS",col:5,row:5},{c:"MO",col:6,row:5},{c:"KY",col:7,row:5},{c:"WV",col:8,row:5},{c:"DC",col:9,row:5},{c:"MD",col:10,row:5},{c:"DE",col:11,row:5},
-  {c:"AZ",col:3,row:6},{c:"NM",col:4,row:6},{c:"OK",col:5,row:6},{c:"AR",col:6,row:6},{c:"TN",col:7,row:6},{c:"VA",col:8,row:6},{c:"NC",col:9,row:6},
-  {c:"TX",col:4,row:7},{c:"LA",col:5,row:7},{c:"MS",col:6,row:7},{c:"AL",col:7,row:7},{c:"GA",col:8,row:7},{c:"SC",col:9,row:7},
-  {c:"HI",col:1,row:8},{c:"FL",col:8,row:8}
-];
-const usGrid = document.getElementById('usGrid');
-const covered = new Set(SITE_CONFIG.coverageStates);
-US_TILES.forEach(s=>{
-  const hi = covered.has(s.c);
-  usGrid.appendChild(el(`<div class="us-tile${hi ? ' hi':''}" style="grid-column:${s.col};grid-row:${s.row};" title="${s.c}">${s.c}</div>`));
-});
-
-// Quote form -> mailto (static site, no backend)
-document.getElementById('quoteForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  const f = new FormData(e.target);
-  const lines = [
-    'Name: ' + f.get('name'),
-    'Company: ' + (f.get('company') || '—'),
-    'Phone: ' + f.get('phone'),
-    'Email: ' + f.get('email'),
-    'Load type: ' + f.get('load'),
-    'Route: ' + (f.get('route') || '—'),
-    'Details: ' + (f.get('details') || '—')
-  ].join('%0D%0A');
-  window.location.href = `mailto:${SITE_CONFIG.contact.email}?subject=${encodeURIComponent('Quote Request from ' + f.get('name'))}&body=${lines}`;
-});
-
-document.getElementById('year').textContent = new Date().getFullYear();
-
-// Mobile menu toggle — this is what was missing before; the hamburger
-// button had no click handler, so on narrow screens the nav links were
-// just hidden with nothing to open them.
-const menuBtn = document.getElementById('menuBtn');
-const navLinks = document.getElementById('navLinks');
-menuBtn.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('open');
-  menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-});
-navLinks.querySelectorAll('a').forEach(a=>{
-  a.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    menuBtn.setAttribute('aria-expanded', 'false');
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
   });
-});
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    burger.setAttribute('aria-expanded', false);
+  }));
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 
 </body>
