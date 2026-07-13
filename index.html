@@ -3,760 +3,467 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A-A Trucking LLC | Flatbed Freight Carrier</title>
-<meta name="description" content="A-A Trucking LLC — professional flatbed freight carrier serving Michigan, Ohio, West Virginia, Virginia, North Carolina, and the Northeast corridor.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<title>A-A Trucking LLC</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
 <style>
 
-/* =========================================================
-   ADDING YOUR PHOTOS
-   Place image files in an "images" folder next to this file,
-   using these exact names — they'll appear automatically:
-
-   images/hero.jpg              full-width hero — truck on the highway
-   images/why-choose-us.jpg     semi truck — "Why Choose Us" section
-   images/flatbed-deliver.jpg   semi truck — "Flatbed" section
-   images/careers-bg.jpg        truck/driver — Start Your Career banner
-   images/about.jpg             yard or company photo
-   images/gallery-1.jpg         load securement
-   images/gallery-2.jpg         equipment / machinery load
-   images/gallery-3.jpg         driver + truck
-
-   Until added, a plain placeholder panel is shown — nothing
-   will appear broken.
-   ========================================================= */
-
-:root{
-  --ink:#161616;
-  --ink-2:#232323;
-  --red:#c41230;
-  --red-dark:#9c0e26;
-  --gray-700:#454545;
-  --gray-500:#6c6c6c;
-  --gray-300:#a3a3a3;
-  --line:#e6e4e1;
-  --bg-alt:#f6f5f2;
-  --paper:#ffffff;
-
-  --display:'Barlow Condensed', sans-serif;
-  --body:'Inter', sans-serif;
-  --mono:'IBM Plex Mono', monospace;
-
-  --container:1200px;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+html{
+scroll-behavior:smooth;
+}
+
 body{
-  font-family:var(--body);
-  color:var(--ink);
-  background:var(--paper);
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  font-size:16px;
-}
-img{max-width:100%;display:block;}
-a{color:inherit;text-decoration:none;}
-ul{list-style:none;}
-.wrap{max-width:var(--container);margin:0 auto;padding:0 32px;}
-section{position:relative;}
-h1,h2,h3,h4{
-  font-family:var(--display);font-weight:700;line-height:1.05;color:var(--ink);
-  text-transform:uppercase; letter-spacing:.005em;
+background:#f5f7fa;
+color:#222;
 }
 
-.eyebrow{
-  font-family:var(--mono);
-  font-size:11.5px;
-  font-weight:600;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--red);
-  margin-bottom:12px;
+nav{
+position:fixed;
+width:100%;
+top:0;
+background:#0b1f3a;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+z-index:1000;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.logo{
+color:white;
+font-size:28px;
+font-weight:800;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav li{
+margin-left:35px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+}
+
+nav a:hover{
+color:#ff4d4d;
+}
+
+.hero{
+height:100vh;
+background:
+linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+url("64426.jpg");
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+padding:20px;
+}
+
+.hero h1{
+font-size:70px;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:24px;
+margin-bottom:40px;
 }
 
 .btn{
-  display:inline-flex;align-items:center;gap:9px;
-  font-family:var(--body);
-  font-size:14.5px;font-weight:700;
-  padding:15px 28px;
-  border-radius:2px;
-  border:2px solid transparent;
-  cursor:pointer;
-  letter-spacing:.02em;
-  transition:background .18s ease, color .18s ease, border-color .18s ease;
-  text-transform:uppercase;
-}
-.btn:active{transform:translateY(1px);}
-.btn-red{background:var(--red);color:#fff;}
-.btn-red:hover{background:var(--red-dark);}
-.btn-outline-dark{border-color:var(--ink);color:var(--ink);}
-.btn-outline-dark:hover{background:var(--ink);color:#fff;}
-.btn-outline-white{border-color:rgba(255,255,255,.55);color:#fff;}
-.btn-outline-white:hover{border-color:#fff;background:rgba(255,255,255,.1);}
-.btn-text{padding:15px 4px; border-bottom:2px solid var(--red);}
-.btn-text-white{color:#fff; border-bottom-color:var(--red);}
-
-a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{
-  outline:2.5px solid var(--red); outline-offset:2px;
+display:inline-block;
+padding:18px 40px;
+background:#d62828;
+color:white;
+text-decoration:none;
+border-radius:40px;
+margin:10px;
+font-weight:bold;
+transition:.3s;
 }
 
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto;}
-  *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
+.btn:hover{
+background:#ff4545;
+transform:translateY(-4px);
 }
 
-.reveal{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
-.reveal.is-visible{opacity:1; transform:translateY(0);}
-
-/* image placeholder */
-.photo{position:relative; overflow:hidden; background:var(--ink-2);}
-.photo img{width:100%;height:100%;object-fit:cover;display:block;}
-.photo.img-missing{display:flex;align-items:center;justify-content:center; background:linear-gradient(155deg, #2a2a2a, #141414);}
-.photo.img-missing img{display:none;}
-.photo.img-missing::after{
-  content: attr(data-caption);
-  font-family:var(--mono); font-size:11px; letter-spacing:.04em; color:#b7b7b7;
-  text-align:center; padding:20px; border:1px dashed rgba(255,255,255,.22); border-radius:3px; max-width:78%;
+section{
+padding:100px 10%;
 }
 
-/* =================== HEADER =================== */
-header{
-  position:fixed; top:0; left:0; right:0; z-index:200;
-  background:rgba(255,255,255,.98);
-  border-bottom:1px solid var(--line);
-}
-.nav{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:14px 32px;
-  max-width:var(--container); margin:0 auto;
-}
-.logo{display:flex; align-items:center; gap:12px; color:var(--ink);}
-.logo .mark{
-  font-family:var(--display); font-weight:700; font-size:30px; letter-spacing:.01em; color:var(--ink);
-  line-height:1;
-}
-.logo .mark span{color:var(--red);}
-.logo .tagline{display:block; font-family:var(--mono); font-size:9.5px; font-weight:500; letter-spacing:.14em; color:var(--gray-500); text-transform:uppercase; margin-top:2px;}
-
-.nav-links{display:flex; align-items:center; gap:28px;}
-.nav-links a{
-  font-family:var(--body); font-size:12.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
-  color:var(--gray-700); transition:color .15s ease;
-}
-.nav-links a:hover{color:var(--red);}
-
-.nav-cta{display:flex;align-items:center;gap:16px;}
-.nav-phone{font-family:var(--mono); font-size:13px; font-weight:600; color:var(--ink); display:flex; align-items:center; gap:7px;}
-.nav-phone svg{width:14px;height:14px;stroke:var(--red);}
-.burger{display:none; flex-direction:column; gap:5px; background:none; border:0; cursor:pointer; padding:6px;}
-.burger span{width:22px;height:2px;background:var(--ink);}
-
-@media (max-width:960px){
-  .nav-links{
-    position:fixed; inset:64px 0 0 0; background:#fff;
-    flex-direction:column; padding:30px 32px; gap:22px; align-items:flex-start;
-    transform:translateX(100%); transition:transform .3s ease; border-top:1px solid var(--line);
-  }
-  .nav-links.open{transform:translateX(0);}
-  .nav-links a{font-size:16px;}
-  .burger{display:flex;}
-  .nav-phone span{display:none;}
+h2{
+text-align:center;
+font-size:42px;
+margin-bottom:50px;
+color:#0b1f3a;
 }
 
-/* =================== HERO =================== */
-.hero{
-  min-height:94vh;
-  display:flex; align-items:center;
-  padding:120px 0 70px;
-  position:relative; overflow:hidden;
-  color:#fff;
+.about{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+align-items:center;
 }
-.hero .photo{position:absolute; inset:0; z-index:0;}
-.hero .photo.img-missing{background:linear-gradient(155deg, #262626, #101010);}
-.hero::after{
-  content:"";
-  position:absolute; inset:0; z-index:1;
-  background:linear-gradient(90deg, rgba(10,10,10,.86) 0%, rgba(10,10,10,.62) 48%, rgba(10,10,10,.3) 100%);
+
+.about img{
+width:100%;
+border-radius:15px;
+box-shadow:0 20px 40px rgba(0,0,0,.25);
 }
-.hero-inner{max-width:var(--container); margin:0 auto; padding:0 32px; position:relative; z-index:2;}
-.hero-content{max-width:640px;}
-.hero .eyebrow{color:#e7a3ad;}
+
+.about p{
+font-size:18px;
+line-height:1.8;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card h3{
+margin-bottom:20px;
+color:#0b1f3a;
+}
+
+.map{
+background:#0b1f3a;
+color:white;
+text-align:center;
+}
+
+.map img{
+width:90%;
+max-width:900px;
+margin-top:40px;
+border-radius:15px;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:25px;
+}
+
+.gallery img{
+width:100%;
+height:260px;
+object-fit:cover;
+border-radius:15px;
+box-shadow:0 10px 20px rgba(0,0,0,.15);
+}
+
+.quote{
+background:white;
+}
+
+form{
+max-width:700px;
+margin:auto;
+}
+
+input,textarea{
+width:100%;
+padding:18px;
+margin:10px 0;
+border-radius:8px;
+border:1px solid #ddd;
+font-size:16px;
+}
+
+textarea{
+height:150px;
+}
+
+button{
+padding:18px 40px;
+background:#d62828;
+color:white;
+border:none;
+border-radius:40px;
+font-size:18px;
+cursor:pointer;
+}
+
+button:hover{
+background:#ff4545;
+}
+
+.contact{
+background:#0b1f3a;
+color:white;
+text-align:center;
+}
+
+footer{
+background:#06101f;
+color:white;
+padding:30px;
+text-align:center;
+}
+
+@media(max-width:900px){
+
 .hero h1{
-  font-size:clamp(48px, 8vw, 96px);
-  margin-bottom:20px;
-  color:#fff;
-  line-height:.98;
-}
-.hero p.lead{font-size:18px; max-width:500px; margin-bottom:36px; color:#e2e2e2;}
-.hero-actions{display:flex; gap:14px; flex-wrap:wrap; align-items:center;}
-
-/* trust marker strip */
-.trust-strip{background:var(--paper); border-bottom:1px solid var(--line);}
-.trust-strip .wrap{display:grid; grid-template-columns:repeat(3,1fr); padding:52px 32px; gap:40px;}
-.trust-item{display:flex; gap:18px; align-items:flex-start;}
-.trust-item .icon{
-  width:46px; height:46px; border-radius:50%; background:var(--bg-alt); border:1px solid var(--line);
-  display:flex; align-items:center; justify-content:center; flex:0 0 auto;
-}
-.trust-item .icon svg{width:22px;height:22px; stroke:var(--red);}
-.trust-item h4{font-size:19px; margin-bottom:6px; letter-spacing:0;}
-.trust-item p{font-size:14px; color:var(--gray-500); text-transform:none;}
-@media (max-width:860px){
-  .trust-strip .wrap{grid-template-columns:1fr; gap:28px;}
+font-size:42px;
 }
 
-/* =================== SPLIT NARRATIVE SECTIONS =================== */
-.split{padding:110px 0;}
-.split-grid{display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center;}
-.split-grid.reverse .split-photo{order:2;}
-.split-grid.reverse .split-copy{order:1;}
-.split-photo{aspect-ratio:4/3; border-radius:2px;}
-.split-copy p{color:var(--gray-500); font-size:16.5px; margin-bottom:16px; text-transform:none;}
-.split-copy h2{font-size:clamp(34px,4.6vw,54px); margin-bottom:20px; line-height:1;}
-.split-points{margin-top:24px; border-top:1px solid var(--line);}
-.split-points li{
-  display:flex; align-items:center; gap:12px; padding:13px 0; border-bottom:1px solid var(--line);
-  font-size:14.5px; color:var(--ink); text-transform:none;
-}
-.split-points li svg{width:16px;height:16px; stroke:var(--red); flex:0 0 auto;}
-@media (max-width:860px){
-  .split-grid, .split-grid.reverse{grid-template-columns:1fr;}
-  .split-grid.reverse .split-photo, .split-grid.reverse .split-copy{order:0;}
+.about{
+grid-template-columns:1fr;
 }
 
-/* =================== STAT ROW =================== */
-.stat-row{background:var(--ink); color:#fff;}
-.stat-row .wrap{display:grid; grid-template-columns:repeat(3,1fr); padding:60px 32px; text-align:center;}
-.stat-row .stat{padding:0 20px; border-left:1px solid rgba(255,255,255,.14);}
-.stat-row .stat:first-child{border-left:none;}
-.stat-row .num{font-family:var(--display); font-size:46px; font-weight:700; color:#fff;}
-.stat-row .label{font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#b7b7b7; margin-top:8px;}
-@media (max-width:760px){
-  .stat-row .wrap{grid-template-columns:1fr; gap:26px;}
-  .stat-row .stat{border-left:none; border-top:1px solid rgba(255,255,255,.14); padding-top:20px;}
-  .stat-row .stat:first-child{border-top:none; padding-top:0;}
+nav{
+padding:20px;
+flex-direction:column;
 }
 
-/* =================== SECTION HEADS =================== */
-.section-head{max-width:640px; margin-bottom:56px;}
-.section-head.center{max-width:660px; margin-left:auto; margin-right:auto; text-align:center;}
-.section-head h2{font-size:clamp(32px,4vw,46px);}
-.section-head p{font-size:16.5px; color:var(--gray-500); margin-top:14px; text-transform:none;}
-.section-pad{padding:110px 0;}
-.on-alt{background:var(--bg-alt);}
-
-/* =================== SERVICES =================== */
-.services-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
-.service-card{background:var(--paper); padding:36px 32px;}
-.service-card .icon{width:40px;height:40px; border-radius:50%; background:var(--bg-alt); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; margin-bottom:18px;}
-.service-card .icon svg{width:19px;height:19px; stroke:var(--red);}
-.service-card h3{font-size:20px; margin-bottom:9px; letter-spacing:0;}
-.service-card p{color:var(--gray-500); font-size:14.5px; text-transform:none;}
-@media (max-width:860px){ .services-grid{grid-template-columns:1fr 1fr;} }
-@media (max-width:560px){ .services-grid{grid-template-columns:1fr;} }
-
-/* =================== COVERAGE =================== */
-.coverage-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
-.coverage-panel{background:#fff; padding:40px 38px;}
-.coverage-panel.dark{background:var(--ink); color:#fff;}
-.coverage-panel h3{font-size:15px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:22px; padding-bottom:16px; border-bottom:1px solid var(--line); font-family:var(--mono); font-weight:600;}
-.coverage-panel.dark h3{color:#fff; border-bottom-color:rgba(255,255,255,.15);}
-.state-row{display:flex; align-items:center; gap:14px; padding:11px 0;}
-.state-row .abbr{
-  font-family:var(--mono); font-weight:600; font-size:12.5px;
-  width:34px; height:26px; display:flex; align-items:center; justify-content:center;
-  border:1px solid var(--line); border-radius:2px; color:var(--ink); flex:0 0 auto;
-}
-.coverage-panel.dark .state-row .abbr{border-color:rgba(255,255,255,.22); color:#fff;}
-.state-row .name{font-size:15px; font-weight:500; text-transform:none; font-family:var(--body);}
-.state-row .tag{font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; color:var(--gray-500); margin-left:auto; text-transform:uppercase;}
-.coverage-panel.dark .state-row .tag{color:#b7b7b7;}
-
-.ext-grid{display:grid; grid-template-columns:1fr 1fr; gap:0 20px;}
-.excl-note{
-  margin-top:22px; padding-top:18px; border-top:1px solid rgba(255,255,255,.15);
-  font-family:var(--mono); font-size:12px; color:#b7b7b7; letter-spacing:.02em; text-transform:none;
-}
-.excl-note strong{color:#fff;}
-@media (max-width:860px){
-  .coverage-grid{grid-template-columns:1fr;}
-  .ext-grid{grid-template-columns:1fr;}
+nav ul{
+margin-top:15px;
 }
 
-/* =================== GALLERY =================== */
-.gallery-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
-.gallery-grid .photo{aspect-ratio:4/5; border-radius:2px;}
-@media (max-width:860px){ .gallery-grid{grid-template-columns:1fr 1fr;} }
-
-/* =================== CAREERS BANNER =================== */
-.careers-banner{
-  position:relative; color:#fff; padding:110px 32px; text-align:center; overflow:hidden;
-}
-.careers-banner .photo{position:absolute; inset:0; z-index:0;}
-.careers-banner .photo.img-missing{background:linear-gradient(155deg, #262626, #101010);}
-.careers-banner::after{content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(10,10,10,.55), rgba(10,10,10,.86));}
-.careers-banner .inner{position:relative; z-index:2; max-width:600px; margin:0 auto;}
-.careers-banner .eyebrow{justify-content:center; display:flex; color:#e7a3ad;}
-.careers-banner h2{color:#fff; font-size:clamp(34px,5vw,56px); margin-bottom:18px;}
-.careers-banner p{color:#dcdcdc; margin:0 auto 30px; font-size:16.5px; text-transform:none;}
-
-/* =================== CAREERS =================== */
-.careers-wrap{display:grid; grid-template-columns:1fr 1fr; gap:56px;}
-.job-card{border:1px solid var(--line); border-radius:2px; padding:30px 32px; margin-bottom:18px; background:#fff;}
-.job-card .job-top{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom:8px;}
-.job-card h3{font-size:21px; letter-spacing:0;}
-.job-card .job-type{
-  font-family:var(--mono); font-size:10.5px; letter-spacing:.05em; text-transform:uppercase;
-  background:var(--bg-alt); border:1px solid var(--line); padding:5px 10px; border-radius:20px; white-space:nowrap; color:var(--gray-700);
-}
-.job-card > p{color:var(--gray-500); font-size:14.5px; margin-bottom:14px; text-transform:none;}
-.job-card ul{margin:0 0 18px; display:grid; gap:8px;}
-.job-card li{font-size:14px; color:var(--gray-500); padding-left:16px; position:relative; text-transform:none;}
-.job-card li::before{content:"–"; position:absolute; left:0; color:var(--red);}
-
-.perk-list{border-top:1px solid var(--line); margin-top:8px;}
-.perk-list li{display:flex; align-items:center; gap:12px; padding:13px 0; border-bottom:1px solid var(--line); font-size:14.5px; text-transform:none;}
-.perk-list li svg{width:15px;height:15px; stroke:var(--red); flex:0 0 auto;}
-@media (max-width:860px){ .careers-wrap{grid-template-columns:1fr;} }
-
-/* =================== CONTACT =================== */
-.contact-wrap{display:grid; grid-template-columns:.85fr 1.15fr; gap:56px;}
-.contact-info-card{background:var(--ink); color:#fff; border-radius:2px; padding:38px 34px;}
-.contact-info-card h3{font-size:22px; color:#fff; margin-bottom:20px;}
-.info-row{display:flex; gap:14px; padding:15px 0; border-bottom:1px solid rgba(255,255,255,.1);}
-.info-row:last-child{border-bottom:none;}
-.info-row svg{width:18px;height:18px;stroke:var(--red); flex:0 0 auto; margin-top:2px;}
-.info-row .lbl{font-family:var(--mono); font-size:10px; letter-spacing:.07em; text-transform:uppercase; color:#b7b7b7; margin-bottom:3px;}
-.info-row .val{font-size:14.5px;}
-.info-row .val small{display:block; font-family:var(--mono); font-size:11px; color:#b7b7b7; margin-top:3px;}
-
-form{background:#fff; border:1px solid var(--line); border-radius:2px; padding:38px 36px;}
-.form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
-.field{margin-bottom:16px;}
-.field label{display:block; font-family:var(--mono); font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--gray-500); margin-bottom:7px;}
-.field input, .field select, .field textarea{
-  width:100%; padding:12px 13px; border:1.4px solid var(--line); border-radius:2px;
-  font-family:var(--body); font-size:14.5px; background:var(--bg-alt); color:var(--ink);
-  transition:border-color .15s ease;
-}
-.field input:focus, .field select:focus, .field textarea:focus{border-color:var(--red); outline:none; background:#fff;}
-.field textarea{resize:vertical; min-height:100px;}
-.form-note{font-size:12px; color:var(--gray-500); margin-top:12px;}
-@media (max-width:900px){
-  .contact-wrap{grid-template-columns:1fr;}
-  .form-row{grid-template-columns:1fr;}
+nav li{
+margin:0 12px;
 }
 
-/* =================== FOOTER =================== */
-footer{background:#0c0c0c; color:#a3a3a3; padding:56px 0 24px; border-top:3px solid var(--red);}
-.footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:48px; margin-bottom:42px;}
-.footer-grid h4{color:#fff; font-size:13px; letter-spacing:.06em; text-transform:uppercase; margin-bottom:15px; font-family:var(--body); font-weight:700;}
-.footer-grid p{font-size:13.5px; max-width:320px; line-height:1.7; text-transform:none;}
-.footer-grid a{display:block; font-size:13.5px; padding:5px 0; color:#a3a3a3; transition:color .15s;}
-.footer-grid a:hover{color:#fff;}
-.footer-legal{
-  border-top:1px solid rgba(255,255,255,.1); padding-top:20px;
-  display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
-  font-family:var(--mono); font-size:11.5px;
 }
-@media (max-width:760px){ .footer-grid{grid-template-columns:1fr;} }
 
 </style>
+
 </head>
+
 <body>
 
-<header>
-  <nav class="nav">
-    <a href="#top" class="logo">
-      <span>
-        <span class="mark">A-A <span>TRUCKING</span></span>
-        <span class="tagline">Driven By The Best</span>
-      </span>
-    </a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#why">Why Us</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#coverage">Coverage</a></li>
-      <li><a href="#careers">Careers</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="nav-cta">
-      <a class="nav-phone" href="tel:+15555550123">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <span>(555) 555-0123</span>
-      </a>
-      <a href="#careers" class="btn btn-red" style="padding:11px 20px; font-size:12.5px;">Driver Application</a>
-      <button class="burger" id="burgerBtn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
-    </div>
-  </nav>
-</header>
+<nav>
 
-<main id="top">
+<div class="logo">A-A Trucking LLC</div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="photo" data-caption="PHOTO — Full-width hero, truck on the highway (images/hero.jpg)">
-      <img src="images/hero.jpg" alt="A-A Trucking LLC flatbed truck on the highway" onerror="this.closest('.photo').classList.add('img-missing')">
-    </div>
-    <div class="hero-inner">
-      <div class="hero-content">
-        <div class="eyebrow">Licensed &amp; Insured Flatbed Carrier</div>
-        <h1>Driven by<br>the best.</h1>
-        <p class="lead">A-A Trucking LLC hauls steel, machinery, and building materials across Michigan, Ohio, West Virginia, Virginia, North Carolina, and the Northeast corridor.</p>
-        <div class="hero-actions">
-          <a href="#careers" class="btn btn-red">Driver Application</a>
-          <a href="#contact" class="btn btn-outline-white">Call A Recruiter</a>
-          <a href="#why" class="btn-text btn-text-white" style="font-size:13.5px; font-weight:700; text-transform:uppercase; letter-spacing:.04em;">Explore A-A Trucking</a>
-        </div>
-      </div>
-    </div>
-  </section>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#map">Service Area</a></li>
+<li><a href="#careers">Careers</a></li>
+<li><a href="#quote">Quote</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
 
-  <!-- TRUST MARKERS -->
-  <section class="trust-strip">
-    <div class="wrap">
-      <div class="trust-item reveal">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 4 8.5 9 9 5-.5 9-4 9-9V7l-9-5z"/></svg></div>
-        <div><h4>Licensed &amp; Insured</h4><p>DOT and MC authority in good standing, with full cargo coverage.</p></div>
-      </div>
-      <div class="trust-item reveal">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div>
-        <div><h4>Safety First</h4><p>WSTM-trained drivers and equipment on a strict inspection schedule.</p></div>
-      </div>
-      <div class="trust-item reveal">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-        <div><h4>24/7 Dispatch</h4><p>A direct dispatcher, reachable day or night — not a call center.</p></div>
-      </div>
-    </div>
-  </section>
+</nav>
 
-  <!-- WHY CHOOSE US — photo left, copy right -->
-  <section class="split" id="why">
-    <div class="wrap split-grid">
-      <div class="photo split-photo reveal" data-caption="PHOTO — A-A Trucking semi on the highway (images/why-choose-us.jpg)">
-        <img src="images/why-choose-us.jpg" alt="A-A Trucking LLC semi truck on the highway" onerror="this.closest('.photo').classList.add('img-missing')">
-      </div>
-      <div class="split-copy reveal">
-        <div class="eyebrow">Why Choose Us</div>
-        <h2>Your trucking partner.</h2>
-        <p style="text-transform:none;">A-A Trucking LLC hauls freight that doesn't fit in a box — structural steel, coil, heavy machinery, and building materials. Every load is secured to spec and tracked from pickup to delivery.</p>
-        <p style="text-transform:none;">We operate a focused regional network across our primary states, backed by a dispatch team that's reachable directly and equipment maintained on a strict inspection schedule.</p>
-        <a href="#services" class="btn btn-outline-dark" style="margin-top:10px;">Explore A-A Trucking</a>
-      </div>
-    </div>
-  </section>
+<section class="hero">
 
-  <!-- FLATBED — copy left, photo right -->
-  <section class="split on-alt">
-    <div class="wrap split-grid reverse">
-      <div class="split-copy reveal">
-        <div class="eyebrow">Flatbed Freight</div>
-        <h2>Deliver freight. Shipped right.</h2>
-        <p style="text-transform:none;">From structural steel to oversized machinery, our flatbeds handle freight that standard vans can't. Loads are chained, tarped, and inspected before they ever leave the yard.</p>
-        <p style="text-transform:none;">Straight talk on capacity, honest transit times, and a driver who shows up when they say they will.</p>
-        <a href="#services" class="btn btn-outline-dark" style="margin-top:10px;">See Our Services</a>
-      </div>
-      <div class="photo split-photo reveal" data-caption="PHOTO — A-A Trucking semi, flatbed loaded (images/flatbed-deliver.jpg)">
-        <img src="images/flatbed-deliver.jpg" alt="A-A Trucking LLC flatbed semi truck with a secured load" onerror="this.closest('.photo').classList.add('img-missing')">
-      </div>
-    </div>
-  </section>
+<div>
 
-  <!-- STAT ROW -->
-  <div class="stat-row">
-    <div class="wrap">
-      <div class="stat"><div class="num">10+</div><div class="label">Years Hauling Freight</div></div>
-      <div class="stat"><div class="num">24/7/365</div><div class="label">Live Dispatch Support</div></div>
-      <div class="stat"><div class="num">Top Pay</div><div class="label">For Our Drivers</div></div>
-    </div>
-  </div>
+<h1>A-A Trucking LLC</h1>
 
-  <!-- SERVICES -->
-  <section class="section-pad" id="services">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="eyebrow">What We Haul</div>
-        <h2>Flatbed services</h2>
-        <p>Freight that's heavy, oversized, or irregularly shaped — hauled by drivers who know how to secure it properly.</p>
-      </div>
-      <div class="services-grid reveal">
-        <div class="service-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="10" rx="1"/><path d="M3 11h18"/></svg></div>
-          <h3>Steel &amp; Coil</h3>
-          <p>Coil racks and chain-down securement for structural steel, beams, and rolled coil.</p>
-        </div>
-        <div class="service-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
-          <h3>Machinery &amp; Equipment</h3>
-          <p>Skid steers, excavators, and industrial machinery hauled with proper weight distribution.</p>
-        </div>
-        <div class="service-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 9h1M9 13h1M14 9h1M14 13h1"/></svg></div>
-          <h3>Building Materials</h3>
-          <p>Lumber, trusses, precast, and palletized materials for job sites on tight schedules.</p>
-        </div>
-        <div class="service-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M12 3v18"/></svg></div>
-          <h3>Oversize &amp; Overweight</h3>
-          <p>Permitted loads with pilot car coordination and route surveys where required.</p>
-        </div>
-        <div class="service-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M3 17V6h9l5 5h4v6"/></svg></div>
-          <h3>Construction Equipment</h3>
-          <p>Low-boy and RGN capacity for dozers, loaders, and other heavy site equipment.</p>
-        </div>
-        <div class="service-card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
-          <h3>Ag &amp; Industrial</h3>
-          <p>Farm equipment and industrial components, secured and delivered on schedule.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<p>Reliable Freight Transportation Across the Midwest & Northeast</p>
 
-  <!-- COVERAGE -->
-  <section class="section-pad on-alt" id="coverage">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="eyebrow">Where We Run</div>
-        <h2>Service area</h2>
-        <p>Five primary states form the core of our network, with extended coverage across the surrounding region.</p>
-      </div>
-      <div class="coverage-grid reveal">
-        <div class="coverage-panel dark">
-          <h3>Primary Service States</h3>
-          <div class="state-row"><span class="abbr">MI</span><span class="name">Michigan</span><span class="tag">Core</span></div>
-          <div class="state-row"><span class="abbr">OH</span><span class="name">Ohio</span><span class="tag">Core</span></div>
-          <div class="state-row"><span class="abbr">WV</span><span class="name">West Virginia</span><span class="tag">Core</span></div>
-          <div class="state-row"><span class="abbr">VA</span><span class="name">Virginia</span><span class="tag">Core</span></div>
-          <div class="state-row"><span class="abbr">NC</span><span class="name">North Carolina</span><span class="tag">Core</span></div>
-          <div class="excl-note">These five states carry our tightest transit times and most consistent capacity.</div>
-        </div>
-        <div class="coverage-panel">
-          <h3>Extended Coverage</h3>
-          <div class="ext-grid">
-            <div>
-              <div class="state-row"><span class="abbr">PA</span><span class="name">Pennsylvania</span></div>
-              <div class="state-row"><span class="abbr">NY</span><span class="name">New York</span></div>
-              <div class="state-row"><span class="abbr">NJ</span><span class="name">New Jersey</span></div>
-              <div class="state-row"><span class="abbr">DE</span><span class="name">Delaware</span></div>
-              <div class="state-row"><span class="abbr">MD</span><span class="name">Maryland</span></div>
-              <div class="state-row"><span class="abbr">DC</span><span class="name">Washington, D.C.</span></div>
-            </div>
-            <div>
-              <div class="state-row"><span class="abbr">CT</span><span class="name">Connecticut</span></div>
-              <div class="state-row"><span class="abbr">RI</span><span class="name">Rhode Island</span></div>
-              <div class="state-row"><span class="abbr">MA</span><span class="name">Massachusetts</span></div>
-              <div class="state-row"><span class="abbr">VT</span><span class="name">Vermont</span></div>
-              <div class="state-row"><span class="abbr">NH</span><span class="name">New Hampshire</span></div>
-            </div>
-          </div>
-          <div class="excl-note" style="border-top-color:var(--line); color:var(--gray-500);">Maine is the one state in this region we do not currently service.</div>
-        </div>
-      </div>
-    </div>
-  </section>
+<a class="btn" href="#quote">Get a Quote</a>
 
-  <!-- FLEET / GALLERY -->
-  <section class="section-pad" id="fleet">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="eyebrow">Our Fleet</div>
-        <h2>On the road</h2>
-        <p>More of the equipment and drivers behind every load.</p>
-      </div>
-      <div class="gallery-grid reveal">
-        <div class="photo" data-caption="PHOTO — Company yard (images/about.jpg)">
-          <img src="images/about.jpg" alt="A-A Trucking LLC company yard" onerror="this.closest('.photo').classList.add('img-missing')">
-        </div>
-        <div class="photo" data-caption="PHOTO — Load securement (images/gallery-1.jpg)">
-          <img src="images/gallery-1.jpg" alt="Flatbed load securement" onerror="this.closest('.photo').classList.add('img-missing')">
-        </div>
-        <div class="photo" data-caption="PHOTO — Driver with cab (images/gallery-2.jpg)">
-          <img src="images/gallery-2.jpg" alt="A-A Trucking driver beside the truck cab" onerror="this.closest('.photo').classList.add('img-missing')">
-        </div>
-      </div>
-    </div>
-  </section>
+<a class="btn" href="#careers">Join Our Team</a>
 
-  <!-- CAREERS BANNER -->
-  <section class="careers-banner" id="careers">
-    <div class="photo" data-caption="PHOTO — Driver / truck for Start Your Career banner (images/careers-bg.jpg)">
-      <img src="images/careers-bg.jpg" alt="A-A Trucking LLC driver and truck" onerror="this.closest('.photo').classList.add('img-missing')">
-    </div>
-    <div class="inner reveal">
-      <div class="eyebrow">Start Your Career</div>
-      <h2>Become part of our team.</h2>
-      <p>We're hiring CDL-A flatbed drivers who take load securement and on-time delivery seriously. Join a fleet that treats drivers right.</p>
-      <a href="#apply" class="btn btn-red">Get Started</a>
-    </div>
-  </section>
+</div>
 
-  <!-- CAREERS DETAIL -->
-  <section class="section-pad on-alt">
-    <div class="wrap">
-      <div class="careers-wrap">
-        <div class="reveal">
-          <div class="job-card">
-            <div class="job-top">
-              <h3>Regional Flatbed Driver</h3>
-              <span class="job-type">Full-Time</span>
-            </div>
-            <p>Runs within our core states (MI / OH / WV / VA / NC) — home most weekends.</p>
-            <ul>
-              <li>Valid CDL-A with a clean MVR</li>
-              <li>1+ year flatbed / tarping experience preferred</li>
-              <li>Comfortable with chains, straps, and tarps</li>
-              <li>Passes DOT physical and drug screen</li>
-            </ul>
-            <a href="#apply" class="btn btn-outline-dark" style="padding:11px 20px; font-size:13px;">Apply Now</a>
-          </div>
-          <div class="job-card">
-            <div class="job-top">
-              <h3>OTR Flatbed Driver</h3>
-              <span class="job-type">Full-Time</span>
-            </div>
-            <p>Extended-region lanes across the Northeast corridor — out 7–10 days.</p>
-            <ul>
-              <li>Valid CDL-A, 2+ years OTR experience</li>
-              <li>Flatbed or heavy-haul experience required</li>
-              <li>Reliable, self-directed, safety-minded</li>
-            </ul>
-            <a href="#apply" class="btn btn-outline-dark" style="padding:11px 20px; font-size:13px;">Apply Now</a>
-          </div>
-        </div>
-        <div class="reveal">
-          <h4 style="font-size:15px; margin-bottom:6px; text-transform:uppercase; letter-spacing:.04em; font-family:var(--body); font-weight:700;">What we offer</h4>
-          <ul class="perk-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Competitive mileage pay</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Weekly settlements</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Late-model equipment</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Health insurance options</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Rider and pet policy</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Direct, responsive dispatch</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+</section>
 
-  <!-- CONTACT -->
-  <section class="section-pad" id="contact">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="eyebrow">Get In Touch</div>
-        <h2>Request a rate or apply to drive</h2>
-        <p>Fill out the form below and our dispatch team will respond — usually the same day.</p>
-      </div>
-      <div class="contact-wrap">
-        <div class="contact-info-card reveal">
-          <h3 style="text-transform:uppercase;">A-A Trucking LLC</h3>
-          <div class="info-row">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <div><div class="lbl">Headquarters</div><div class="val">[Street Address]<br>[City], MI [ZIP]</div></div>
-          </div>
-          <div class="info-row">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <div><div class="lbl">Dispatch</div><div class="val">(555) 555-0123 <small>24/7 dispatch line</small></div></div>
-          </div>
-          <div class="info-row">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-            <div><div class="lbl">Email</div><div class="val">dispatch@aatruckingllc.com</div></div>
-          </div>
-          <div class="info-row">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            <div><div class="lbl">Office Hours</div><div class="val">Mon–Fri, 7:00 AM – 6:00 PM ET<small>Dispatch available 24/7</small></div></div>
-          </div>
-          <div class="info-row">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-            <div><div class="lbl">Authority</div><div class="val">MC# [XXXXXX] <small>DOT# [XXXXXXX]</small></div></div>
-          </div>
-        </div>
+<section id="about">
 
-        <form id="apply" action="mailto:dispatch@aatruckingllc.com" method="POST" enctype="text/plain" class="reveal">
-          <div class="form-row">
-            <div class="field"><label for="name">Full Name</label><input id="name" name="Name" type="text" required></div>
-            <div class="field"><label for="company">Company (if shipper)</label><input id="company" name="Company" type="text"></div>
-          </div>
-          <div class="form-row">
-            <div class="field"><label for="phone">Phone</label><input id="phone" name="Phone" type="tel" required></div>
-            <div class="field"><label for="email">Email</label><input id="email" name="Email" type="email" required></div>
-          </div>
-          <div class="field">
-            <label for="reason">I'm reaching out about</label>
-            <select id="reason" name="Reason">
-              <option>Requesting a shipping quote</option>
-              <option>Driver job application</option>
-              <option>General inquiry</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <div class="field"><label for="origin">Origin (if quote)</label><input id="origin" name="Origin" type="text"></div>
-            <div class="field"><label for="destination">Destination (if quote)</label><input id="destination" name="Destination" type="text"></div>
-          </div>
-          <div class="field">
-            <label for="message">Message</label>
-            <textarea id="message" name="Message" placeholder="Load details, CDL experience, questions — whatever's useful."></textarea>
-          </div>
-          <button type="submit" class="btn btn-red" style="width:100%; justify-content:center;">Send Message</button>
-          <p class="form-note">Submitting opens your email client addressed to dispatch@aatruckingllc.com. Prefer to call? Dispatch is at (555) 555-0123.</p>
-        </form>
-      </div>
-    </div>
-  </section>
+<h2>About Us</h2>
 
-</main>
+<div class="about">
+
+<img src="62522.jpg">
+
+<div>
+
+<p>
+
+A-A Trucking LLC provides dependable transportation solutions for businesses throughout the Northeast and Midwest. Our experienced drivers, modern equipment, and commitment to safety ensure every shipment arrives on time.
+
+Whether you need regional freight, dedicated routes, or long-haul transportation, we deliver with professionalism, reliability, and exceptional customer service.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="services">
+
+<h2>Our Services</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>🚛 Dry Van Freight</h3>
+<p>Safe and dependable transportation for general freight.</p>
+</div>
+
+<div class="card">
+<h3>📦 Dedicated Routes</h3>
+<p>Reliable recurring transportation for your business.</p>
+</div>
+
+<div class="card">
+<h3>⚡ Expedited Shipping</h3>
+<p>Fast delivery when time matters most.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="map" id="map">
+
+<h2 style="color:white;">Where We Operate</h2>
+
+<p>
+
+Serving Pennsylvania, New Jersey, Delaware, Maryland, Virginia, Ohio, Indiana, Illinois, Michigan, Wisconsin, Kentucky, Tennessee, New York, Connecticut, Massachusetts and surrounding states.
+
+</p>
+
+<br>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Blank_US_Map_%28states_only%29.svg">
+
+</section>
+
+<section>
+
+<h2>Our Fleet</h2>
+
+<div class="gallery">
+
+<img src="64426.jpg">
+<img src="62522.jpg">
+<img src="64426.jpg">
+<img src="62522.jpg">
+
+</div>
+
+</section>
+
+<section id="careers">
+
+<h2>Careers</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>Drive With Us</h3>
+
+<p>
+
+Competitive Pay<br>
+
+Home Time<br>
+
+Modern Equipment<br>
+
+Friendly Dispatch<br>
+
+Growth Opportunities
+
+</p>
+
+<br>
+
+<a class="btn" href="#contact">Apply Today</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="quote" id="quote">
+
+<h2>Request a Freight Quote</h2>
+
+<form>
+
+<input placeholder="Company Name">
+
+<input placeholder="Your Name">
+
+<input placeholder="Phone Number">
+
+<input placeholder="Email">
+
+<input placeholder="Pickup Location">
+
+<input placeholder="Delivery Location">
+
+<textarea placeholder="Tell us about your shipment"></textarea>
+
+<button>Request Quote</button>
+
+</form>
+
+</section>
+
+<section class="contact" id="contact">
+
+<h2 style="color:white;">Contact Us</h2>
+
+<p>
+
+📞 (555) 555-5555
+
+<br><br>
+
+✉ dispatch@aatrucking.com
+
+<br><br>
+
+Available 24 Hours
+
+</p>
+
+</section>
 
 <footer>
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <h4>A-A Trucking LLC</h4>
-        <p>A flatbed freight carrier hauling steel, machinery, and building materials across Michigan, Ohio, West Virginia, Virginia, North Carolina, and the Northeast corridor.</p>
-      </div>
-      <div>
-        <h4>Company</h4>
-        <a href="#why">Why Us</a>
-        <a href="#services">Services</a>
-        <a href="#coverage">Coverage Area</a>
-        <a href="#careers">Careers</a>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <a href="tel:+15555550123">(555) 555-0123</a>
-        <a href="mailto:dispatch@aatruckingllc.com">dispatch@aatruckingllc.com</a>
-        <a href="#contact">Request a Quote</a>
-      </div>
-    </div>
-    <div class="footer-legal">
-      <span>&copy; <span id="year"></span> A-A Trucking LLC. All rights reserved.</span>
-      <span>MC# [XXXXXX] &nbsp;·&nbsp; DOT# [XXXXXXX]</span>
-    </div>
-  </div>
+
+© 2026 A-A Trucking LLC
+
 </footer>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  const burger = document.getElementById('burgerBtn');
-  const navLinks = document.getElementById('navLinks');
-  burger.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-    burger.setAttribute('aria-expanded', open);
-  });
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    burger.setAttribute('aria-expanded', false);
-  }));
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-</script>
-
 </body>
+
 </html>
